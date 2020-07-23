@@ -9,14 +9,14 @@ def store_view(request):
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer= customer, complete= False)
         items = order.orderitem_set.all()
-        cartitems = order.get_cart_items
+        cartItems = order.get_cart_items
     else:
-        item = []
+        items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
         cartitems =order['get_cart_items']
     products = Product.objects.all()
     context = {'products': products,
-               'cartitems': cartitems}
+               'cartItems': cartItems}
     return render(request, 'store/store.html', context)
 
 
@@ -25,14 +25,17 @@ def cart_view(request):
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer= customer, complete= False)
         items = order.orderitem_set.all()
-        cartitems = order.get_cart_items
+        cartItems = order.get_cart_items
+        
     else:
-        item = []
+        items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
+        cartItems = order['get_cart_items']
+        
     context = {
-        'items' : items,
         'order' : order ,
-        'cartitems' : cartitems
+        'items' : items,
+        'cartItems' : cartItems
     }
     return render(request, 'store/cart.html', context)
 
@@ -42,31 +45,37 @@ def checkout_view(request):
     if request.user.is_authenticated :
         customer = request.user.customer
         order,created = Order.objects.get_or_create(customer= customer, complete= False)
+        cartItems = order.get_cart_items
         items = order.orderitem_set.all()
-        cartitems = order.get_cart_items
+        
     else:
-        item = []
+        items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
+        cartItems = order['get_cart_items']
+    
+      
     context = {
-        'items' : items,
-        'order' : order ,
+       'items' : items,
+       'order' : order,
+       'cartItems' : cartItems,
     }
     return render(request, 'store/checkout.html', context)
 
 def updateitem_view (request):
-    data = json.loads(request.data)
-    productId = data['productId']
+    data = json.loads(request.body)
     action = data['action']
-    customer = request.user.customer
+    productId = data['productId']
     product = Product.objects.get(id=productId)
-    order,created = Order.objects.get_or_create(order= order, complete= False)
-    cartitems = order.get_cart_items
-    
-    if action == 'add' :
-        cartitems =  cartitems + 1
+    customer = request.user.customer
+    order,created = Order.objects.get_or_create(customer= customer, complete= False)
+    orderItem,created = OrderItem.objects.get_or_create(order = order, product = product)
+    cartItems = order.get_cart_items
+    quantity = orderItem.quantity
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
     elif action == 'remove':
-       cartitems =  cartitems - 1
-    OrderItem.save()
+        orderItem.quantity = (orderItem.quantity - 1)
+    orderItem.save()
     
     if OrderItem.quantity <= 0 :
         OrderItem.delete()
