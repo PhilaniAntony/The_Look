@@ -35,7 +35,7 @@ def cart_view(request):
     return render(request, 'store/cart.html', context)
 
 
-@csrf_exempt
+
 def checkout_view(request):
     data = cartData(request)
     items = data['items']
@@ -53,8 +53,10 @@ def updateitem_view (request):
     data = json.loads(request.body)
     action = data['action']
     productId = data['productId']
+    
     product = Product.objects.get(id=productId)
     customer = request.user.customer
+    
     order,created = Order.objects.get_or_create(customer= customer, complete= False)
     orderItem,created = OrderItem.objects.get_or_create(order = order, product = product)
     cartItems = order.get_cart_items
@@ -71,9 +73,9 @@ def updateitem_view (request):
     return JsonResponse('Item was added', safe = False)
 
 
-@csrf_exempt
+
 def processorder_view(request):
-    transaction_id = datetime.now.timestamp()
+    transaction_id = datetime.datetime.now().timestamp()
     
     data = json.loads(request.body)
     
@@ -100,4 +102,4 @@ def processorder_view(request):
                 state = data['shipping']['state'] ,
                 zipcode = data['shipping']['zipcode']
             )
-    return JsonResponse('Payment was completed', safe = False)
+    return JsonResponse('Payment was completed...', safe = False)
