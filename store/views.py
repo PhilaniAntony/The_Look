@@ -4,8 +4,46 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
-from django.views.decorators.csrf import  csrf_exempt
+from django.contrib.auth.models import Group
+from .forms import CreateUserForm
 from .utils import cookieCart, cartData, guestOrder
+
+#register view
+def register_view(request):
+    form = CreateUserForm()
+    if request.method == 'POST' :
+        form = CreateUserForm(request.POST)
+        if form.is_valid() :   
+            user = form.save()
+            group = Group.objects.get(name='customer')
+            user.groups.add(group)
+            Customer.objects.create(user = user)
+            messages.success(request, f'A new account has been created ')   
+            return redirect('store')  
+    context={
+        'form' : form
+    }
+    return render(request, 'store/register.html', context)
+
+#Login View for customer
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password= password)
+        if user is not None :
+            login(request, user)
+            return redirect('store')
+        else:
+            messages.info(request,'Username or password incorrect')
+    
+    context={}
+    return render(request, 'store/login.html', context)
+
+#logout View for cautomer
+def log_out(request):
+    logout(request)
+    return redirect('login')
 
 def store_view(request):
     data = cartData(request)

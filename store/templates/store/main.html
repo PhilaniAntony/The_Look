@@ -2,13 +2,15 @@
 {% load static %}
 <html>
 <head>
-	<title>Ecom</title>
+	<title>The Look</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	
 
 	<script type="text/javascript">
 		var user = '{{request.user}}'
@@ -63,23 +65,28 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="{% url 'store' %}">Shop</a>
+	  <a class="navbar-brand" href="{% url 'store' %}">The Look</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
+	    <span class="lnr lnr-menu"></span>
 	  </button>
 
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
+	    <ul class="navbar-nav ml-auto">
+		  <li class="nav-item">
+	        <a class="nav-link" href="{% url 'store' %}">Home</a>
+	      </li>
+	      <li class="nav-item ">
 	        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
 	      </li>
 	 
 	    </ul>
 	    <div class="form-inline my-2 my-lg-0">
-	     	<a href="#"class="btn btn-warning">Login</a>
+	     	<a href="{% url 'login' %}"class="nav-link">
+			 <span class="lnr lnr-user"></span>
+			 </a>
 	     	
-	     	<a href="{% url 'cart' %}">
-	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
+	     	<a href="{% url 'cart' %}" class="nav-link">
+	    		<span class="lnr lnr-cart"></span>
 	    	</a>
 	    	<p id="cart-total">{{cartItems}}</p>
 
@@ -87,14 +94,18 @@
 	  </div>
 	</nav>
 
-     <div class="container">
-            <br>
-            {% block content %}
+    <div class="container">
+        <br>
+        {% block content %}
 
 
-            {% endblock content %}
-         </div>
-
+        {% endblock content %}
+    </div>
+    <footer class="bg-dark">
+		<div class="container-fluid">
+     <p class="footer-text">&copy;2020. All Rights Reserved The Look <p>
+	    </div>
+	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 

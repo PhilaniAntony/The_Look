@@ -1,0 +1,69 @@
+@import '../abstract/abstract-dir';
+
+.bg-dark {
+    background-color: #fff !important;
+}
+
+.navbar-dark {
+    & .navbar-brand {
+        color: black;
+
+        &:hover {
+            @include nav-hover;
+        }
+    }
+
+    & .navbar-nav .nav-link {
+        @include nav-links;
+
+        &:hover {
+            @include nav-hover;
+        }
+
+        &:active {
+            @include nav-active;
+        }
+
+        &:visited {
+            @include nav-visited;
+        }
+    }
+
+    & .navbar-toggler {
+        color: black;
+        border-color: black;
+    }
+}
+
+link:hover {
+    @include nav-hover;
+}
+
+a.nav-link {
+    @include nav-links;
+
+    &:hover {
+        @include nav-hover;
+    }
+
+    &:active {
+        @include nav-active;
+    }
+
+    &:visited {
+        @include nav-visited;
+    }
+}
+
+#cart-total {
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    color: #fff;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-left: -20px;
+}

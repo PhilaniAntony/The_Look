@@ -1,0 +1,142 @@
+body {
+  background-color: #fafafa;
+  font-family: "PT Sans Narrow", sans-serif; }
+
+.row.flex-grow {
+  width: 100%; }
+
+.auth .login-half-bg {
+  background: url("../images/auth/login-bg.jpg");
+  background-size: cover; }
+.auth .register-half-bg {
+  background: url("../images/auth/register-bg.jpg");
+  background-size: cover; }
+.auth.lock-full-bg {
+  background: url("../images/auth/lockscreen-bg.jpg");
+  background-size: cover; }
+.auth .lock-profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 100%; }
+.auth .auth-form-dark {
+  background: rgba(0, 0, 0, 0.6);
+  color: white; }
+  .auth .auth-form-dark .form-control {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: white; }
+    .auth .auth-form-dark .form-control .input-placeholder {
+      color: white; }
+.auth .auth-form-light {
+  background: white; }
+  .auth .auth-form-light select {
+    color: black; }
+  .auth .auth-form-light .input-group .form-control:focus, .auth .auth-form-light .input-group .form-control:active {
+    border-color: #f4f4f4; }
+.auth .auth-form-transparent {
+  background: transparent; }
+  .auth .auth-form-transparent .form-control,
+  .auth .auth-form-transparent .input-group-text {
+    border-color: theme-color(secondary); }
+    .auth .auth-form-transparent .form-control:focus, .auth .auth-form-transparent .form-control:active,
+    .auth .auth-form-transparent .input-group-text:focus,
+    .auth .auth-form-transparent .input-group-text:active {
+      border-color: theme-color(secondary); }
+  .auth .auth-form-transparent select {
+    outline-color: theme-color(secondary); }
+.auth.auth-img-bg {
+  padding: 0; }
+  @media (min-width: 768px) {
+    .auth.auth-img-bg .auth-form-transparent {
+      width: 55%;
+      margin: auto; } }
+.auth .brand-logo {
+  margin-bottom: 2rem; }
+  .auth .brand-logo img {
+    width: 150px; }
+.auth form .form-group {
+  margin-bottom: 1.5rem; }
+  .auth form .form-group label {
+    font-size: .8125rem; }
+  .auth form .form-group .form-control {
+    background: transparent;
+    border-radius: 0;
+    font-size: .9375rem; }
+.auth form .auth-form-btn {
+  height: 50px;
+  line-height: 1.5; }
+.auth form .auth-link {
+  font-size: 1em; }
+  .auth form .auth-link:hover {
+    color: initial; }
+
+.bg-dark {
+  background-color: #fff !important; }
+
+.navbar-dark .navbar-brand {
+  color: black; }
+  .navbar-dark .navbar-brand:hover {
+    transform: scale(1.05);
+    color: black; }
+.navbar-dark .navbar-nav .nav-link {
+  color: black;
+  font-family: "PT Sans Narrow", sans-serif;
+  margin-right: 1.5rem;
+  font-weight: 400;
+  transform: all ease-in 0.8s; }
+  .navbar-dark .navbar-nav .nav-link:hover {
+    transform: scale(1.05);
+    color: black; }
+  .navbar-dark .navbar-nav .nav-link:active {
+    font-size: 1.1em; }
+  .navbar-dark .navbar-nav .nav-link:visited {
+    color: rgba(0, 0, 0, 0.8); }
+.navbar-dark .navbar-toggler {
+  color: black;
+  border-color: black; }
+
+link:hover {
+  transform: scale(1.05);
+  color: black; }
+
+a.nav-link {
+  color: black;
+  font-family: "PT Sans Narrow", sans-serif;
+  margin-right: 1.5rem;
+  font-weight: 400;
+  transform: all ease-in 0.8s; }
+  a.nav-link:hover {
+    transform: scale(1.05);
+    color: black; }
+  a.nav-link:active {
+    font-size: 1.1em; }
+  a.nav-link:visited {
+    color: rgba(0, 0, 0, 0.8); }
+
+#cart-total {
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  color: #fff;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  margin-left: -20px; }
+
+footer {
+  height: 7vh;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.2em;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: .75rem; }
+
+.footer-text {
+  position: relative;
+  transform: translateY(30%);
+  transition: all ease-in 0.8s; }
+
+/*# sourceMappingURL=styles.css.map */

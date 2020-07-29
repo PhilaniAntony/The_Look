@@ -1,0 +1,22 @@
+@import './variables';
+
+@mixin nav-links {
+    color: black;
+    font-family: $font-narrow;
+    margin-right: 1.5rem;
+    font-weight: 400;
+    transform: all ease-in 0.8s;
+}
+
+@mixin nav-hover {
+    transform: scale(1.05);
+    color: black;
+}
+
+@mixin nav-active {
+    font-size: 1.1em;
+}
+
+@mixin nav-visited {
+    color: rgba(#000000, 0.8);
+}

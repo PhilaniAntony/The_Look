@@ -11,11 +11,64 @@ class Customer(models.Model):
 	def __str__(self):
 		return self.name
 
+#Collection model
+class Collection(models.Model) :
+    STATUS =(
+        ('Active', 'Active'),
+        ('Deactived', 'Deactived'),
+    )
+    name = models.CharField(max_length=200, null=True)
+    description = models.CharField(max_length=450, null=True)
+    status = models.CharField(max_length=200, null =  True, choices = STATUS)
+    image = models.ImageField( null=True, blank= True)
+    
+    def __str__(self):
+        return self.name
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url 
+    
+  
+#Category model
+class Category(models.Model) :
+    STATUS =(
+        ('Active', 'Active'),
+        ('Deactived', 'Deactived'),
+    )
+    name = models.CharField(max_length=200, null=True)
+    status = models.CharField(max_length=200, null =  True, choices = STATUS)
+    image = models.ImageField( null=True, blank= True)
+    
+    def __str__(self):
+        return self.name
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+    
+
+#Tags
+class Tag(models.Model) :
+    name = models.CharField(max_length=200, null=True)
+    
+    def __str__(self):
+        return self.name
+   
 
 class Product(models.Model):
 	name = models.CharField(max_length=200)
 	price = models.DecimalField(max_digits=7, decimal_places=2)
 	digital = models.BooleanField(default=False,null=True, blank=True)
+	collection = models.ManyToManyField(Collection)
+	category = models.ManyToManyField(Category)
+	tags = models.ManyToManyField(Tag)
 	image = models.ImageField(null=True, blank=True)
 
 	def __str__(self):
