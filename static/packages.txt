@@ -1,0 +1,2 @@
+ Dependencies
+ chartist daterangepicker flag-icon-css gulp-uglify jquery moment perfect-scrollbar popper.js progressbar.js pwstabs select2 select2-bootsrap-theme simple-line-icons twbs-pagination typehead.js

@@ -1,0 +1,31 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The Look</title>
+    <link rel="stylesheet" href="{% static 'vendors/simple-line-icons/css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/chartist/chartist.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/panda.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+  </head>
+  <body>
+   {% block content %}
+   
+   {% endblock content %}
+  <!-- plugins:js -->
+    <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'js/off-canvas.js' %}"></script>
+    <script src="{% static 'js/misc.js"' %}"></script>
+    <!-- endinject -->
+  </body>
+</html>
