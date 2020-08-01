@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.http import JsonResponse
 from django.views.generic.list import ListView
@@ -58,7 +58,7 @@ def store_view(request):
     order = data['order']
     cartItems = data['cartItems']
     
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('name')
     context = {'products': products,
                'brands' : brands,
                'categories':categories,
@@ -155,7 +155,7 @@ def processorder_view(request):
 
 
 def brand_list_view(request,slug):
-    products = Product.objects.filter(brand=slug)
+    products = get_object_or_404(Product,category=slug)
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -169,8 +169,8 @@ def brand_list_view(request,slug):
     }  
     return render(request,'store/partials/brand.html', context)
     
-def category_list_view (ListView):
-    products = Product.objects.filter(category=slug)
+def category_list_view (request, slug):
+    products = get_object_or_404(Product,category=slug)
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -186,8 +186,8 @@ def category_list_view (ListView):
    
     
     
-def collection_list_view(request,slug):
-    products = Product.objects.filter(collection=slug)
+def collection_list_view(request,slu):
+    products = get_object_or_404(Collection, slug=slug)
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -202,7 +202,7 @@ def collection_list_view(request,slug):
     return render(request,'store/partials/collection.html', context) 
 
 def tag_list_view (request,slug):
-    products = Product.objects.filter(tag=slug)
+    products = get_object_or_404(Tags, slug=slug)
     data = cartData(request)
     items = data['items']
     order = data['order']

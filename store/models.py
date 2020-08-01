@@ -18,6 +18,7 @@ class Brand(models.Model) :
         ('Deactived', 'Deactived'),
     )
     name = models.CharField(max_length=200, null=True)
+    slug = models.CharField(max_length=200, null=True)
     status = models.CharField(max_length=200, null =  True, choices = STATUS)
     image = models.ImageField( null=True, blank= True)
     
@@ -38,6 +39,7 @@ class Collection(models.Model) :
         ('Deactived', 'Deactived'),
     )
     name = models.CharField(max_length=200, null=True)
+    slug = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=450, null=True)
     status = models.CharField(max_length=200, null =  True, choices = STATUS)
     image = models.ImageField( null=True, blank= True)
@@ -62,6 +64,7 @@ class Category(models.Model) :
         ('Deactived', 'Deactived'),
     )
     name = models.CharField(max_length=200, null=True)
+    slug = models.CharField(max_length=200, null=True)
     status = models.CharField(max_length=200, null =  True, choices = STATUS)
     
     def __str__(self):
@@ -73,7 +76,7 @@ class Category(models.Model) :
 #Tags
 class Tag(models.Model) :
     name = models.CharField(max_length=200, null=True)
-    
+    slug = models.CharField(max_length=200, null=True)
     def __str__(self):
         return self.name
    

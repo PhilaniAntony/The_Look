@@ -253,12 +253,12 @@ button.btn.btn-outline-secondary.add-btn.update-cart {
     background-color: black;
     color: white; }
 
-button.btn.btn-sm.btn-outline-secondary.view-details {
+a.btn.btn-sm.btn-outline-secondary.view-details {
   border: 1px solid black;
   font-size: 14px;
   letter-spacing: .5px;
   color: black; }
-  button.btn.btn-sm.btn-outline-secondary.view-details:hover {
+  a.btn.btn-sm.btn-outline-secondary.view-details:hover {
     background-color: black;
     color: white; }
 

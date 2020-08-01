@@ -8,7 +8,7 @@
 				<h5 class="product-name"><strong>{{product.name}}</strong></h5>
 				<h5 class="product-price">${{product.price}}</h5>
 				<!--<hr>-->
-				<button data-product="{{product.name}}" data-price="{{product.price}}" data-image="{{product.imageURL}}" class="btn btn-sm btn-outline-secondary view-details" data-toggle="modal" data-target="#productModal">View Product </button>
+				<a href="{% url 'store'  %}" data-product="{{product.name}}" data-price="{{product.price}}" data-image="{{product.imageURL}}" class="btn btn-sm btn-outline-secondary view-details" data-toggle="modal" data-target="#productModal">View Product </a>
 				<button data-product="{{product.id}}" data-action="add" class="btn btn-sm btn-outline-secondary add-btn update-cart"><span class="lnr lnr-cart"></span> Add to Cart</button>
 			</div>
 		</div>

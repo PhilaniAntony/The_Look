@@ -16,10 +16,10 @@ urlpatterns = [
 	path('process_order/', views.processorder_view, name="processorder"),
 
     #List Views
-    path('brand/<slug:slug>', views.brand_list_view, name='brands-list'),
-    path('category/<slug:slug>', views.category_list_view, name='category-list'),
-    path('collection/<slug:slug>', views.collection_list_view, name='collection-list'),
-    path('tag/<slug:slug>', views.tag_list_view, name='tag-list'),
+    path('brand/<slug:slug>', views.brand_list_view, name='brand'),
+    path('category/<slug:slug>', views.category_list_view, name='category'),
+    path('collection/<slug:slug>', views.collection_list_view, name='collection'),
+    path('tag/<slug:slug>', views.tag_list_view, name='tag'),
     
    #Password Reset Views
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name= "store/password_reset.html"), name="reset_password"),
