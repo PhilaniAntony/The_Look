@@ -1,8 +1,17 @@
 // Fonts Variables 
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 $font-narrow :'PT Sans Narrow',
 sans-serif;
 $font-pro : 'Source Sans Pro',
 sans-serif;
+$font-poppins:'Poppins',
+sans-serif;
+
+body {
+    background-color: #fafafa;
+    font-family: $font-narrow;
+    color: black;
+
+}
 
 $border-color: #f4f4f4;

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView 
 import json
 import datetime
 from .models import *
@@ -46,6 +48,11 @@ def log_out(request):
     return redirect('login')
 
 def store_view(request):
+    brands = Brand.objects.all().order_by('name')
+    categories = Category.objects.all()
+    collections = Collection.objects.all().order_by('name')
+    tags = Tag.objects.all().order_by('name')
+    
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -53,6 +60,10 @@ def store_view(request):
     
     products = Product.objects.all()
     context = {'products': products,
+               'brands' : brands,
+               'categories':categories,
+               'collections' : collections,
+               'tags' : tags,
                'cartItems': cartItems,
                'shipping' : False,
                }
@@ -141,3 +152,68 @@ def processorder_view(request):
                 zipcode = data['shipping']['zipcode']
             )
     return JsonResponse('Payment was completed...', safe = False)
+
+
+def brand_list_view(request,slug):
+    products = Product.objects.filter(brand=slug)
+    data = cartData(request)
+    items = data['items']
+    order = data['order']
+    cartItems = data['cartItems']
+    
+    context = {
+        'products': products,
+        'items' : items,
+       'order' : order,
+       'cartItems' : cartItems,
+    }  
+    return render(request,'store/partials/brand.html', context)
+    
+def category_list_view (ListView):
+    products = Product.objects.filter(category=slug)
+    data = cartData(request)
+    items = data['items']
+    order = data['order']
+    cartItems = data['cartItems']
+    
+    context = {
+        'products': products,
+        'items' : items,
+       'order' : order,
+       'cartItems' : cartItems,
+    } 
+    return render(request,'store/partials/category.html', context) 
+   
+    
+    
+def collection_list_view(request,slug):
+    products = Product.objects.filter(collection=slug)
+    data = cartData(request)
+    items = data['items']
+    order = data['order']
+    cartItems = data['cartItems']
+    
+    context = {
+        'products': products,
+        'items' : items,
+       'order' : order,
+       'cartItems' : cartItems,
+    } 
+    return render(request,'store/partials/collection.html', context) 
+
+def tag_list_view (request,slug):
+    products = Product.objects.filter(tag=slug)
+    data = cartData(request)
+    items = data['items']
+    order = data['order']
+    cartItems = data['cartItems']
+    
+    context = {
+        'products': products,
+        'items' : items,
+       'order' : order,
+       'cartItems' : cartItems,
+    } 
+    return render(request,'store/partials/tag.html', context) 
+
+    

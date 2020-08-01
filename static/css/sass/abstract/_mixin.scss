@@ -20,3 +20,22 @@
 @mixin nav-visited {
     color: rgba(#000000, 0.8);
 }
+
+@mixin divider {
+    border: 1px solid rgba(black, .8);
+    background-color: black;
+    width: 30%;
+
+}
+
+@mixin dark-button {
+    border: 1px solid black;
+    font-size: 14px;
+    letter-spacing: .5px;
+    color: black;
+
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+}

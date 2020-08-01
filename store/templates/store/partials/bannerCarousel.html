@@ -1,0 +1,30 @@
+{% load static %}
+<div class="page-banner">
+    <div class="container-fluid">
+        <div class='row'>
+            <div class="col-md-6 page-banner_left">
+                <h1 class="page-banner_heading">The Look </h1>
+                <hr class="page-banner_divider">
+                <h3 class="page-banner_subheading">High Fashion Lifestyle</h3>
+                <button class="btn page-banner_button">Shop Now </button>
+            </div>
+            <div class="col-md-6 page-banner_right">
+               <div id="bannerCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="img-fluid w-100" src="{% static 'images/carousel/bannerone_big.jpg' %}"  alt="First slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#bannerCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

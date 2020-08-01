@@ -1,5 +1,5 @@
 var updateBtns = document.getElementsByClassName("update-cart");
-
+var viewDetails = document.getElementsByClassName("view-details");
 for (var i = 0; i < updateBtns.length; i++) {
   updateBtns[i].addEventListener("click", function () {
     var productId = this.dataset.product;
@@ -10,6 +10,48 @@ for (var i = 0; i < updateBtns.length; i++) {
     } else {
       updateUserOrder(productId, action);
     }
+  });
+}
+for (var i = 0; i < viewDetails.length; i++) {
+  viewDetails[i].addEventListener("click", function () {
+    var productName = this.dataset.product;
+    var productPrice = this.dataset.price;
+    var productImage = this.dataset.image;
+    var modalHeader = document.querySelector(".modal-header");
+    var modalBody = document.querySelector(".modal-body");
+
+    // Create Modal Title
+    var modalTitle = document.createElement("h5");
+    modalTitle.classList = "product-name modal-title";
+    modalTitle.innerHTML = `<strong> ${productName} </strong>`;
+    //Create Close button
+    var closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.className = "close";
+    closeButton.dataset.dismiss = "modal";
+    closeButton.innerHTML = '<span aria-hidden="true">&times;</span>';
+    // Create Product image
+    var modalImage = document.createElement("img");
+    modalImage.src = productImage;
+    modalImage.classList = "thumbnail product-image";
+    //Create product price
+    var modalPrice = document.createElement("h5");
+    modalPrice.className = "modal-price";
+    modalPrice.textContent = productPrice;
+    console.log(productName);
+    //Append the element to the modal
+    modalHeader.appendChild(modalTitle);
+    modalHeader.appendChild(closeButton);
+    modalBody.appendChild(modalImage);
+    modalBody.appendChild(modalPrice);
+
+    //Clear the conent when close button is clicked
+    closeButton.addEventListener("click", function () {
+      //Reset Content modal content
+      modalTitle.innerHTML = "";
+      modalImage.src = "";
+      modalPrice.textContent = "";
+    });
   });
 }
 

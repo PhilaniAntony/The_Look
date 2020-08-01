@@ -1,12 +1,20 @@
 @import '../abstract/abstract-dir';
 
+
 .bg-dark {
     background-color: #fff !important;
+}
+
+.page-header {
+    background-color: white;
+    height: 60vh;
+    overflow: hidden;
 }
 
 .navbar-dark {
     & .navbar-brand {
         color: black;
+        font-weight: 700;
 
         &:hover {
             @include nav-hover;

@@ -1,19 +1,1 @@
 @import '../abstract/abstract-dir';
-
-footer {
-    height: 7vh;
-    font-family: $font-pro;
-    font-size: 1.2em;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: .75rem;
-
-}
-
-.footer-text {
-    position: relative;
-    transform: translateY(30%);
-    transition: all ease-in 0.8s;
-}

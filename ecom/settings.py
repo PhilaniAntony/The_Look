@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     #'rest_framework',
     #store
     'store.apps.StoreConfig',
-    'dashboard.apps.DashboardConfig'
+    #'dashboard.apps.DashboardConfig'
 ]
 
 MIDDLEWARE = [

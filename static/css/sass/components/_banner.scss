@@ -1,1 +1,52 @@
 @import '../abstract/abstract-dir';
+
+
+
+.col-md-6.page-banner_left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.page-banner {
+    font-family: $font-poppins;
+
+    &_heading {
+        font-size: 3.5em;
+        font-weight: 400;
+        letter-spacing: .3px;
+        position: relative;
+        transform: translateY(90%);
+        font-family: $font-pro;
+        color: black;
+    }
+
+    &_divider {
+        @include divider;
+        margin-left: 0;
+        position: relative;
+        transform: translateY(35px);
+        margin-left: 10px;
+    }
+
+    &_subheading {
+        color: black;
+        font-size: 2.5em;
+        font-weight: 400;
+        letter-spacing: 1px;
+        position: relative;
+        margin-left: .5rem;
+        font-family: $font-pro;
+        transform: translateY(100%);
+    }
+
+    &_button.btn {
+        position: relative;
+        transform: translateY(185%);
+        margin-left: 10px;
+        display: inline;
+        width: 25%;
+        @include dark-button;
+    }
+}

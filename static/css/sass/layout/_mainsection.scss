@@ -1,0 +1,52 @@
+@import '../abstract/abstract-dir';
+
+.main-section {
+    font-family: $font-poppins;
+
+    &_heading {
+        margin-top: 2.5rem;
+        letter-spacing: .3px;
+        font-weight: 400;
+        font-family: $font-poppins;
+        color: black;
+        margin-bottom: .75rem;
+    }
+
+    &_divider {
+
+        border: 1.5px solid black;
+        width: 7.5%;
+        margin-left: 5px;
+        background-color: black;
+        margin-top: -2.5px;
+    }
+}
+
+button.btn.btn-outline-secondary.add-btn.update-cart {
+    @include dark-button
+}
+
+button.btn.btn-sm.btn-outline-secondary.view-details {
+    @include dark-button
+}
+
+h5.product-name {
+    color: black;
+    font-weight: 300;
+    font-size: 1.0em;
+    display: inline-block;
+    float: left;
+    margin-right: 15%;
+}
+
+h5.product-price {
+    color: black;
+
+}
+
+h5.group-title {
+    &:not(:first-child) {
+        padding-left: 1px;
+        margin-top: 1rem;
+    }
+}
