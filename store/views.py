@@ -1,13 +1,14 @@
-from django.shortcuts import render, get_object_or_404
-from .models import *
+from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.models import Group
 from django.http import JsonResponse
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView 
+
 import json
 import datetime
 from .models import *
-from django.contrib.auth.models import Group
+
 from .forms import CreateUserForm
+
 from .utils import cookieCart, cartData, guestOrder
 
 #register view
@@ -153,9 +154,33 @@ def processorder_view(request):
             )
     return JsonResponse('Payment was completed...', safe = False)
 
+def view_product(request,pk):
+    
+    products = Product.objects.get(id=pk)
+    data = cartData(request)
+    items = data['items']
+    order = data['order']
+    cartItems = data['cartItems']
+    
+    context = {
+        'product': product,
+        'items' : items,
+        'order' : order,
+        'cartItems' : cartItems,
+        'brands' : brands,
+        'categories':categories,
+        'collections' : collections,
+        'tags' : tags,
+    } 
+    return render(request,'store/partials/product.html', context)
 
-def brand_list_view(request,slug):
-    products = get_object_or_404(Product,category=slug)
+def brand_list_view(request,vendor):
+    brands = Brand.objects.all().order_by('name')
+    categories = Category.objects.all()
+    collections = Collection.objects.all().order_by('name')
+    tags = Tag.objects.all().order_by('name')
+    
+    products = Product.objects.filter(brand=brand)
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -164,13 +189,22 @@ def brand_list_view(request,slug):
     context = {
         'products': products,
         'items' : items,
-       'order' : order,
-       'cartItems' : cartItems,
+        'order' : order,
+        'cartItems' : cartItems,
+        'brands' : brands,
+        'categories':categories,
+        'collections' : collections,
+        'tags' : tags,
     }  
     return render(request,'store/partials/brand.html', context)
     
-def category_list_view (request, slug):
-    products = get_object_or_404(Product,category=slug)
+def category_list_view (request,cat):
+    brands = Brand.objects.all().order_by('name')
+    categories = Category.objects.all()
+    collections = Collection.objects.all().order_by('name')
+    tags = Tag.objects.all().order_by('name')
+    
+    products = Product.objects.filter(category=cat)
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -179,30 +213,49 @@ def category_list_view (request, slug):
     context = {
         'products': products,
         'items' : items,
-       'order' : order,
-       'cartItems' : cartItems,
+        'order' : order,
+        'cartItems' : cartItems,
+        'brands' : brands,
+        'categories':categories,
+        'collections' : collections,
+        'tags' : tags,
     } 
     return render(request,'store/partials/category.html', context) 
    
     
     
-def collection_list_view(request,slu):
-    products = get_object_or_404(Collection, slug=slug)
+def collection_list_view(request,coll):
+    brands = Brand.objects.all().order_by('name')
+    categories = Category.objects.all()
+    collections = Collection.objects.all().order_by('name')
+    tags = Tag.objects.all().order_by('name')
+    
+    products = Product.objects.filter(category=cat)
+    unique_products = set(products)
     data = cartData(request)
     items = data['items']
     order = data['order']
     cartItems = data['cartItems']
     
     context = {
-        'products': products,
+        'products': unique_products,
         'items' : items,
-       'order' : order,
-       'cartItems' : cartItems,
+        'order' : order,
+        'cartItems' : cartItems,
+        'brands' : brands,
+        'categories':categories,
+        'collections' : collections,
+        'tags' : tags,
     } 
-    return render(request,'store/partials/collection.html', context) 
+    return render(request,'store/partials/collection.html',context) 
 
-def tag_list_view (request,slug):
-    products = get_object_or_404(Tags, slug=slug)
+def tag_list_view (request,tag):
+    brands = Brand.objects.all().order_by('name')
+    categories = Category.objects.all()
+    collections = Collection.objects.all().order_by('name')
+    tags = Tag.objects.all().order_by('name')
+    
+    products = Product.objects.filter(tag=tag)
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -211,9 +264,14 @@ def tag_list_view (request,slug):
     context = {
         'products': products,
         'items' : items,
-       'order' : order,
-       'cartItems' : cartItems,
+        'order' : order,
+        'cartItems' : cartItems,
+        'brands' : brands,
+        'categories':categories,
+        'collections' : collections,
+        'tags' : tags,
     } 
     return render(request,'store/partials/tag.html', context) 
+
 
     

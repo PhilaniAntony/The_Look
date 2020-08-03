@@ -50,3 +50,18 @@ h5.group-title {
         margin-top: 1rem;
     }
 }
+
+a.cat-links {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+        color: rgba(black, 0.7);
+        text-decoration: none;
+
+    }
+
+    &:visited {
+        color: rgba(black, 0.7)
+    }
+}
