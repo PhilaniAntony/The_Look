@@ -1,0 +1,1 @@
+web: gununicorn ecom.wsgi --log-file-
