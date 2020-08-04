@@ -25,7 +25,7 @@ SECRET_KEY = 'h4eh&yho=2i3&yuti3exiqudrk!v(b(7g5(=91dk3&3g#m4j9j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://git.heroku.com/thelookza.git', '127.0.0.1']
 
 
 # Application definition
