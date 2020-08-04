@@ -1,1 +1,1 @@
-web: gununicorn ecom.wsgi --log-file-
+web: gunicorn ecom.wsgi 
