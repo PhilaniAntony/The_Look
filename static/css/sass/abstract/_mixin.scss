@@ -1,5 +1,9 @@
 @import './variables';
 
+
+
+//Links Mixins
+
 @mixin nav-links {
     color: black;
     font-family: $font-narrow;
@@ -37,12 +41,7 @@
     color: rgba(#000000, 0.8);
 }
 
-@mixin divider {
-    border: 1px solid rgba(black, .8);
-    background-color: black;
-    width: 30%;
 
-}
 
 @mixin dark-button {
     border: 1px solid black;
@@ -54,4 +53,268 @@
         background-color: black;
         color: white;
     }
+}
+
+//Banner Carousel
+@mixin content-heading() {
+    font-family: $font-pro;
+    font-size: $heading1-font-destop;
+    font-weight: 400;
+    letter-spacing: .3px;
+    position: relative;
+    transform: translateY(105%);
+    color: black;
+
+
+
+    //Medium screen
+    @media (min-width: 845px) and (max-width: 991.98px) {
+        transform: translateY(50%);
+        font-size: $heading1-font-tablet-lg;
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width:600px) and (max-width: 844.98px) {
+        transform: translateY(90%);
+        font-size: $heading1-font-tablet;
+    }
+
+    // Extra small devices (portrait phones, less than 576px)
+    @media (max-width: 575.98px) {
+        transform: translateY(90%);
+        font-size: $heading1-font-mobile;
+    }
+
+
+
+}
+
+@mixin content-subheading() {
+    color: black;
+    font-size: $heading2-font-destop;
+    font-weight: 400;
+    letter-spacing: 1px;
+    position: relative;
+    margin-left: .5rem;
+    font-family: $font-pro;
+    transform: translateY(110%);
+
+    @media (min-width: 1024.98px) and (max-width: 1439.98px) {
+        transform: translateY(105%);
+    }
+
+    @media (min-width : 992px) and (max-width : 1024px) {
+        transform: translateY(40%);
+    }
+
+    //Large Screen
+    @media (min-width: 1090.98px) and (max-width: 1170px) {
+        transform: translateY(45%);
+    }
+
+    @media (min-width : 992[x]) and (max-width :1090px) {
+        transform: translateY(45%);
+    }
+
+    //Medium screen
+    @media (min-width: 845px) and (max-width: 991.98px) {
+        transform: translateY(50%);
+        font-size: $heading2-font-tablet-lg;
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width:600px) and (max-width: 844.98px) {
+        transform: translateY(15%);
+        font-size: $heading2-font-tablet;
+    }
+
+    // Extra small devices (portrait phones, less than 576px)
+    @media (min-width:320.98px) and (max-width: 575.98px) {
+        transform: translateY(50%);
+        font-size: $heading2-font-mobile;
+    }
+
+    @media(max-width:320px) {
+        transform: translateY(20%);
+        font-size: $heading2-font-mobile;
+
+    }
+}
+
+@mixin divider {
+    position: relative;
+    transform: translateY(35px);
+    margin-left: 10px;
+    border: 1px solid rgba(black, .8);
+    background-color: black;
+    width: 30%;
+
+    @media (min-width : 1023.98px) and (max-width : 1440px) {
+        transform: translateY(55px)
+    }
+
+    @media (min-width: 1024.98px) and (max-width: 1439.98px) {
+        transform: translateY(55px);
+    }
+
+    @media (min-width: 845px) and (max-width: 991.98px) {
+        transform: translateY(20PX);
+        width: 25%;
+
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width:600px) and (max-width: 844.98px) {
+        transform: translateY(20px);
+        width: 40%;
+    }
+
+    // Extra small devices (portrait phones, less than 576px)
+    @media (max-width: 575.98px) {
+        transform: translateY(15px);
+        width: 30%;
+        margin-left: 6px;
+    }
+
+
+}
+
+@mixin content-title() {}
+
+
+
+@mixin content-button {
+    position: relative;
+    transform: translateY(11.5vh);
+    margin-left: 10px;
+    display: inline;
+    width: 25%;
+    @include dark-button;
+
+
+
+    @media (min-width: 1024.98px) and (max-width: 1439.98px) {
+        transform: translateY(200%);
+        font-size: 16px;
+    }
+
+    @media (min-width : 992px) and (max-width : 1024px) {
+        transform: translateY(145%);
+    }
+
+    //Medium screen
+    @media (min-width: 845px) and (max-width: 991.98px) {
+        transform: translateY(115%);
+        width: 30%
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width:600px) and (max-width: 844.98px) {
+        transform: translateY(45%);
+        width: 35%;
+        font-size: 12px;
+    }
+
+    @media (min-width: 425.98px) and (max-width: 575.98px) {
+        transform: translateY(3.5vh);
+        width: 30%;
+        font-size: 12px;
+    }
+
+    @media (min-width : 375.98) and (max-width:425px) {
+        transform: translateY(3.5vh);
+        width: 30%;
+        font-size: 12px;
+    }
+
+    @media (min-width:320.98px) and(max-width:375px) {
+        width: 27%;
+        transform: translateY(50%);
+        font-size: 12px;
+    }
+
+    @media (max-width: 320px) {
+        width: 35%;
+        transform: translateY(30%);
+        font-size: 12px;
+    }
+
+}
+
+@mixin carousel-text($size, $mb) {
+    font-size: $size;
+    font-weight: 200;
+    margin-bottom: $mb;
+}
+
+@mixin carousel-title($size) {
+    color: $base-contrast;
+    font-family: "Montserrat";
+    letter-spacing: 1px;
+    font-size: $size;
+    justify-self: start;
+    position: relative;
+    font-weight: 300;
+    left: -6vw;
+}
+
+@mixin carousel-subheading {
+    color: #fff;
+    justify-self: start;
+    position: relative;
+    left: -6vw;
+    font-weight: 200;
+}
+
+@mixin page-subtitle($base-color, $hover-color) {
+    word-spacing: 3px;
+    font-weight: 400;
+    font-size: 1.5em;
+    color: $base-color;
+    text-transform: capitalize;
+    transition: ease-in 0.2s;
+
+    &:hover {
+        color: $hover-color;
+        transform: scale(1.3);
+    }
+}
+
+@mixin header_height($height) {
+    height: $height;
+}
+
+@mixin banner_postion($from_top) {
+    position: relative;
+    top: $from_top;
+}
+
+@mixin content-text($color, $weight, $spacing) {
+    color: $color;
+    font-weight: $weight;
+    letter-spacing: $spacing;
+}
+
+@mixin header_height($height) {
+    //Height for the page heade
+    height: $height;
+}
+
+@mixin banner_postion($from_top) {
+    //Postioning of banner from top
+    position: relative;
+    top: $from_top;
+}
+
+@mixin banner_header($font-size) {
+    font-size: $font-size;
+}
+
+@mixin status-base {
+    background-color: #000000;
+    color: $base-contrast;
+    font-weight: 600;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }

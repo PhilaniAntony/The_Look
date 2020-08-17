@@ -105,8 +105,8 @@
 
 /*-------------------------------------------------------------------*/
 /* === Import Bootstrap functions and variables === */
-@import "../../node_modules/bootstrap/scss/variables";
-@import "../../node_modules/bootstrap/scss/functions";
+//@import "../../node_modules/bootstrap/scss/variable";
+//@import "../../node_modules/bootstrap/scss/functions";
 
 /*-------------------------------------------------------------------*/
 /* === Import template variables === */
@@ -119,12 +119,8 @@
 @import "../../node_modules/compass-mixins/lib/animate";
 
 /*-------------------------------------------------------------------*/
-/* === Boostrap Main SCSS === */
-@import "../../node_modules/bootstrap/scss/bootstrap";
-
-/*-------------------------------------------------------------------*/
 /* === Template mixins === */
-@import "./business/";
+@import "./business/invoice";
 @import "./uifeatures/uifeatures";
 
 /* === Template mixins === */
@@ -172,6 +168,9 @@
 
 @import "navbar";
 @import "sidebar";
-//@import './layouts';
+@import "./layout/footer";
 @import "./vertical/vertical-wrapper";
+
 @import "dashboard";
+/* === Boostrap Main SCSS === */
+//@import "../../node_modules/bootstrap/scss/bootstrap";

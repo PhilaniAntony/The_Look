@@ -2,20 +2,21 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-# Customer model
-class Client (models.Model) :
-    user = models.OneToOneField(User, null=True,blank= True, on_delete=models.CASCADE)
+#Client  model
+class Client(models.Model):
+    user = models.OneToOneField(User, null =True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null =  True)
     phone = models.CharField(max_length=200, null =  True)
     email= models.CharField(max_length=200, null =  True)
     date_created = models.DateTimeField(auto_now_add = True, null =  True)
     image = models.ImageField( null=True, blank= True)
     
-    
-    
+    #Dispaly client by name on dashboard
     def __str__(self):
         return self.name
     
+    #This method covers for thr error that occurs when you delete an image 
+    #making the image.url an emty string 
     @property
     def imageURL(self):
         try:
@@ -24,7 +25,7 @@ class Client (models.Model) :
             url = ''
         return url
     
-#Adress Model   
+#Client base of operation
 class Address(models.Model):
     name = models.CharField(max_length=200, null =  True)
     block = models.CharField(max_length=200, null =  True)
@@ -33,19 +34,11 @@ class Address(models.Model):
     country = models.CharField(max_length=200, null =  True)
     zipcode = models.CharField(max_length=10, null =  True)
     
+    #Display address by block 
     def __str__(self):
         return self.block
     
-#Shiiping Adress    
-class ShippingAddress(models.Model):
-	customer = models.ForeignKey(Customer, null=True,  on_delete=models.SET_NULL)
-	address = models.ForeignKey(Address, null=True, on_delete=models.SET_NULL)
-
-	def __str__(self):
-		return self.address    
- 
- 
-#Collection model
+    
 class Collection(models.Model) :
     STATUS =(
         ('Active', 'Active'),
@@ -64,22 +57,24 @@ class Collection(models.Model) :
             url = self.image.url
         except:
             url = ''
-        return url 
-    
-  
-#Category model
-class Category(models.Model) :
+        return url
+#category, collection, tag & product declareed in store will be moved to dashboard models.py 
+class Category(models.Model):
+    #Option to pause and activate a category in the shop
     STATUS =(
         ('Active', 'Active'),
-        ('Deactived', 'Deactived'),
+        ('Paused', 'Paused'),
     )
     name = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=450, null=True)
     status = models.CharField(max_length=200, null =  True, choices = STATUS)
     image = models.ImageField( null=True, blank= True)
     
+    #Display cat by name
     def __str__(self):
         return self.name
+    
+    #image handling method 
     @property
     def imageURL(self):
         try:
@@ -88,14 +83,13 @@ class Category(models.Model) :
             url = ''
         return url
     
-
-#Tags
 class Tag(models.Model) :
     name = models.CharField(max_length=200, null=True)
     
     def __str__(self):
         return self.name
     
+#Payment Method
 class Paymentmethod(models.Model) :
     name = models.CharField(max_length= 200, null = False)
     value = models.FloatField(null= True)
@@ -103,9 +97,9 @@ class Paymentmethod(models.Model) :
     note = models.CharField(max_length= 200, null = False)
     
     def __str__(self):
-        return self.name    
-
-#Product Model
+        return self.name 
+    
+#Product model
 class Product(models.Model):
     STATUS =(
         ('Active', 'Active'),
@@ -123,17 +117,20 @@ class Product(models.Model):
     vendor = models.CharField(max_length=200, null =  True)
     productType = models.CharField(max_length=200, null =  True)
     description = models.CharField(max_length=400, null =  True, blank = True)
-    quantity = models.IntegerField(default=0)
-    hs = models.CharField(max_length=200, null =  True)
     date_created = models.DateTimeField(auto_now_add = True, null =  True)
-    digital = models.BooleanField(default=False,null=True, blank=True)
-    status = models.CharField(max_length=200, null =  True, choices = STATUS)
+   
+    quantity = models.IntegerField(default=0)
     size = models.CharField(max_length=200, null =  True, choices = SIZE)
     color = models.CharField(max_length=200, null =  True)
     note = models.CharField(max_length=450, blank = True )
+    
     unitPrice = models.FloatField(null= True)
     discount = models.FloatField(null= True)
     image = models.ImageField(null=True, blank=True)
+    hs = models.CharField(max_length=200, null =  True)
+    digital = models.BooleanField(default=False,null=True, blank=True)
+    
+    status = models.CharField(max_length=200, null =  True, choices = STATUS)
     category = models.ManyToManyField(Category)
     collection = models.ManyToManyField(Collection)
     tags = models.ManyToManyField(Tag)
@@ -155,115 +152,26 @@ class Product(models.Model):
             price = self.productPrice - self.discount
             return price
         
-#Supliers
+
 class Supplier(models.Model):
     STATUS =(
         ('Active', 'Active'),
         ('Deactived', 'Deactived'),
     )
+       
+    name = models.CharField(max_length=200, null=False)
+    account_manager = models.CharField(max_length=200, null=False)
+    email = models.EmailField(max_length=200, null=False)
+    phone = models.CharField(max_length=200, null=False)
+    note = models.CharField(max_length=200, null =  True)
+    
+    address = models.CharField(max_length=450, null =  True)
+    url = models.CharField(max_length=200, null =  True)
+    image = models.ImageField( null=True, blank= True)
+    
+    #product
     product = models.ManyToManyField(Product)
-    address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
-    paymentmethod = models.ForeignKey(Paymentmethod, null = True, on_delete= models.SET_NULL) 
-    name = models.CharField(max_length=200, null=False)
-    email = models.EmailField(max_length=200, null=False)
-    phone = models.CharField(max_length=200, null=False)
-    url = models.CharField(max_length=200, null =  True)
-    handler = models.CharField(max_length=200, null=False)
-    image = models.ImageField( null=True, blank= True)
-    status = models.CharField(max_length=200, null =  True, choices = STATUS)
-    note = models.CharField(max_length=200, null =  True) 
-    paymentMethod = models.CharField(max_length=200, null =  True)
-    
-    def __str__(self):
-        return self.name
-    
-    
-    @property
-    def imageURL(self):
-        try:
-            url = self.image.url
-        except:
-            url = ''
-        return url 
-    
-        
-
-     
-#Order items    
-class OrderItem(models.Model):
-	product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-	quantity = models.IntegerField(default=0, null=True, blank=True)
-	date_added = models.DateTimeField(auto_now_add=True)
-
-	@property
-	def get_total(self):
-		total = self.product.price * self.quantity
-		return total
-
-#Orders Model
-class Order (models.Model) :
-    STATUS =(
-        ('Pending', '   Pending'),
-        ('Out for delivery', 'Out for delivery'),
-        ('Delivered', 'delivered'),
-    )
-    orderItems = models.ForeignKey(OrderItem, null = True, on_delete= models.SET_NULL)
-    customer = models.ForeignKey(Customer, null = True, on_delete= models.SET_NULL)
-    paymentmethod = models.ForeignKey(Paymentmethod, null = True, on_delete= models.SET_NULL)
-    
-    date_created = models.DateTimeField(auto_now_add = True, null =  True)
-    status = models.CharField(max_length=200, null =  True, choices = STATUS)
-    note = models.CharField(max_length=1000, null =  True)
-    address = models.ForeignKey(ShippingAddress, null=True, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.product.name
-    
-    @property
-    def shipping(self):
-        shipping = False
-        orderitems =  self.orderitem_set.all()
-        for i in orderitems:
-            if i.product.digital == False:
-                shipping = True
-        return shipping
-    
-    @property
-    def get_cart_total(self):
-        orderitems = self.orderitem_set.all()
-        total = sum([item.get_total for item in orderitems])
-        return total
-    
-    @property
-    def get_cart_items(self):
-        orderitems = self.orderitem_set.all()
-        total = sum([item.quantity for item in orderitems])
-        return total
-    
-    
-
-    
-#Shippers
-class Shippers(models.Model):
-    STATUS =(
-        ('Active', 'Active'),
-        ('Deactived', 'Deactived'),
-    )
-    
-    Order = models.ManyToManyField(Order)
-    address = models.ForeignKey(Address, null=True, on_delete=models.CASCADE)
-    paymentmethod = models.ForeignKey(Paymentmethod, null = True, on_delete=models.SET_NULL)
-    
-    name = models.CharField(max_length=200, null=False)
-    email = models.EmailField(max_length=200, null=False)
-    phone = models.CharField(max_length=200, null=False)
-    url = models.CharField(max_length=200, null =  True)
-    handler = models.CharField(max_length=200, null=False)
-    image = models.ImageField( null=True, blank= True)
-    status = models.CharField(max_length=200, null =  True, choices = STATUS)
-    
-    
-    note = models.CharField(max_length=200, null =  True) 
-    paymentMethod = models.CharField(max_length=200, null =  True)
+    status = models.CharField(max_length=200, null =  True, choices = STATUS) 
     
     def __str__(self):
         return self.name
@@ -277,3 +185,37 @@ class Shippers(models.Model):
             url = ''
         return url
     
+#Shipping Company
+class Shipping_company(models.Model):
+    STATUS =(
+        ('Active', 'Active'),
+        ('Deactived', 'Deactived'),
+    )
+    
+    name = models.CharField(max_length=200, null=False)
+    account_manager = models.CharField(max_length=200, null=False)
+    email = models.EmailField(max_length=200, null=False)
+    phone = models.CharField(max_length=200, null=False)
+    url = models.CharField(max_length=200, null =  True)
+    note = models.CharField(max_length=200, null =  True)
+    image = models.ImageField( null=True, blank= True)
+    
+    #Order = models.ManyToManyField(Order)
+    #address = models.ForeignKey(Address, null=True, on_delete=models.CASCADE)
+    status = models.CharField(max_length=200, null =  True, choices = STATUS)
+    paymentmethod = models.ManyToManyField(Paymentmethod)
+
+    
+    def __str__(self):
+        return self.name
+    
+    
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+    
+   

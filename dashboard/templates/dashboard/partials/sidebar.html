@@ -20,14 +20,14 @@
       <span class="nav-link">Dashboard</span>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'home' %}">
+      <a class="nav-link" href="{% url 'dashboard:home' %}">
         <span class="menu-title">Dashboard</span>
         <i class="icon-screen-desktop menu-icon text-white"></i>
       </a>
     </li>
     <li class="nav-item nav-category"><span class="nav-link">Shop Manage</span></li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'orders' %}" >
+      <a class="nav-link" href="#" >
         <span class="menu-title">Orders</span>
         <i class="icon-layers menu-icon  text-white"></i>
       </a>
@@ -39,33 +39,33 @@
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{% url 'products' %}">Inventory </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:products' %}">Inventory </a></li>
           <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html">Collections </a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'category' %}">Categories</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'tags' %}">Tags </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:category' %}">Categories</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:tags' %}">Tags </a></li>
         </ul>
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'customers' %}">
+      <a class="nav-link" href="#">
         <span class="menu-title">Customers</span>
         <i class="icon-people menu-icon  text-white"></i>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link"  href="{% url 'payment' %}" >
+      <a class="nav-link"  href="{% url 'dashboard:payment' %}" >
         <span class="menu-title">Promotions</span>
         <i class="icon-heart menu-icon  text-white"></i>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'suppliers' %}">
+      <a class="nav-link" href="{% url 'dashboard:suppliers' %}">
         <span class="menu-title">Suppliers</span>
         <i class="icon-book-open menu-icon text-white"></i>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'shipping' %}">
+      <a class="nav-link" href="{% url 'dashboard:shipping' %}">
         <span class="menu-title">Shipping Companies</span>
         <i class="icon-plane menu-icon  text-white"></i>
       </a>
@@ -77,9 +77,9 @@
       </a>
       <div class="collapse" id="analytics">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{% url 'products' %}">Dashboard </a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'tags' %}">Reports </a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'category' %}">Live View</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:products' %}">Dashboard </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:tags' %}">Reports </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:category' %}">Live View</a></li>
         </ul>
       </div>
     </li>
@@ -91,9 +91,9 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{% url 'products' %}">Overview</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'tags' %}">Campaigns</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'category' %}">Automations</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:products' %}">Overview</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:tags' %}">Campaigns</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:category' %}">Automations</a></li>
         </ul>
       </div>
     </li>
@@ -105,9 +105,9 @@
       </a>
       <div class="collapse" id="store">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{% url 'products' %}">Preferences</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'tags' %}">Pages</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'category' %}">Blog posts</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:products' %}">Preferences</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:tags' %}">Pages</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:category' %}">Blog posts</a></li>
         </ul>
       </div>
     </li>

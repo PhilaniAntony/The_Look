@@ -9,6 +9,38 @@
     background-color: white;
     height: 60vh;
     overflow: hidden;
+
+    @media (min-width : 1023.98px) and (max-width : 1440px) {
+        height: 62vh;
+    }
+
+    @media (min-width : 992px) and (max-width : 1024px) {
+        height: 48vh;
+    }
+
+    //Medium screen
+    @media (min-width: 845px) and (max-width: 991.98px) {
+        height: 50vh;
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 600px) and (max-width: 844.98px) {
+        height: 46.5vh;
+    }
+
+    // Extra small devices (portrait phones, less than 576px)
+    @media (min-width:470.00px) and (max-width: 575.98px) {
+        height: 85vh;
+    }
+
+    @media(min-width:320.98px) and (max-width: 469.98px) {
+        height: 75vh;
+    }
+
+    @media(max-width:320px) {
+        height: 70vh;
+    }
+
 }
 
 .navbar-dark {

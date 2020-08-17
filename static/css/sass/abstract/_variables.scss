@@ -7,11 +7,39 @@ sans-serif;
 $font-poppins:'Poppins',
 sans-serif;
 
+/*
+Font sizes
+*/
+
+$body_font-base: 1em;
+$body-font-extended: 1.5em;
+//heading1
+$heading1-font-mobile: 2.0em;
+$heading1-font-tablet: 2.5em;
+$heading1-font-tablet-lg: 3.0em;
+$heading1-font-destop: 3.5em;
+
+//heading2
+$heading2-font-mobile: 1.5em;
+$heading2-font-tablet: 2.0em;
+$heading2-font-tablet-lg: 2.5em;
+$heading2-font-destop: 3.0em;
+
+//heading3
+$heading3-font-tablet: 1.375em;
+$heading3-font-tablet-lg: 1.5em;
+$heading3-font-destop: 1.75em;
+//heading4
+$heading4-font-universal: 1.125em;
+
+//heading1
+$blockqoute-font-tablet: 1.25em;
+$blockqoute-font-destop: 1.5em;
+$border-color: #f4f4f4;
+
 body {
     background-color: #fafafa;
     font-family: $font-narrow;
     color: black;
 
 }
-
-$border-color: #f4f4f4;

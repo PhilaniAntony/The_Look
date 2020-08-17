@@ -7,46 +7,39 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width:596.98px) and (max-width: 844.98px) {
+        height: 35vh;
+    }
+
+    @media (min-width:320.98px) and (max-width: 575.98px) {
+        height: 30vh;
+    }
+
+    @media (max-width: 320px) {
+        height: 32vh;
+    }
 }
 
 .page-banner {
     font-family: $font-poppins;
 
     &_heading {
-        font-size: 3.5em;
-        font-weight: 400;
-        letter-spacing: .3px;
-        position: relative;
-        transform: translateY(90%);
-        font-family: $font-pro;
-        color: black;
+        @include content-heading;
     }
 
     &_divider {
         @include divider;
-        margin-left: 0;
-        position: relative;
-        transform: translateY(35px);
-        margin-left: 10px;
+
     }
 
     &_subheading {
-        color: black;
-        font-size: 2.5em;
-        font-weight: 400;
-        letter-spacing: 1px;
-        position: relative;
-        margin-left: .5rem;
-        font-family: $font-pro;
-        transform: translateY(100%);
+        @include content-subheading;
     }
 
     &_button.btn {
-        position: relative;
-        transform: translateY(185%);
-        margin-left: 10px;
-        display: inline;
-        width: 25%;
-        @include dark-button;
+
+        @include content-button;
     }
 }

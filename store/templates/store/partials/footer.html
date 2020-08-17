@@ -1,94 +1,83 @@
 {% load static %}
-<footer class=" footer mt-5">
+<footer class="footer">
 	<div class="container-fluid">
-        <div class="row">
-            <!--col-->
-            <div class="col-md-6">
-                <h4 class="footer-text">Sign up for our style news</h4>
+        <div class="footer-top">
+            <div class="row">
+                <!--col-->
+                <div class="col-sm-6 mt-3">
+                    <h4 class="footer-text">Sign up for our style news</h4>
+                </div>
+                <!--col-->
+                <div class="col-sm-6">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="useremail" placeholder="Enter your email!">
+                        </div>
+                        <button type="submit" class="btn btn-outline-secondary footer-button mb-2">Submit</button>
+                    </form>
+                </div>
+            </div>   
+        </div>
+        <!--row-->
+        <div class="footer-middle mt-3">
+            <div class="row">
+                <!--col-->
+                <div class="col-sm-6">
+                    <h3 class="footer-company-name">THELOOK.COM</h3>
+                    <hr class="company-name-divider">
+                  
+                </div>
+                <!--col-->
+                <div class="col-sm-6">
+                    <a href="{% url 'store:login' %}" class="footer-middle-links" >Login to your Account</a>
+                </div>
             </div>
-            <!--col-->
-            <div class="col-md-6">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="useremail" placeholder="Enter your email!">
+        </div>
+        <!--row-->
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 ">
+                    <h5 class="footer-company--name">
+                        Account
+                    </h5>
+                    <div class="footer-group ">
+                        <a href="#" class="footer-group-item">Account Details</a>
+                        <a href="#" class="footer-group-item ">Orders</a>
+                        <a href="#" class="footer-group-item">Returns & Exchange</a>
+                        <a href="#" class="footer-group-item ">WishList</a>
+                        <a href="#" class="footer-group-item ">Email Preferences</a>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                </form>
-            </div>
-        </div>
-        <!--row-->
-        <div class="row">
-            <!--col-->
-            <div class="col-md-6">
-                <h3 class="footer-company--name">
-                    <a href="{% url 'store' %}">TheLook.com</a>
-                </h3>
-            </div>
-            <!--col-->
-            <div class="col-md-">
-                <h3 class="footer-login">
-                    <a href="{% url 'store' %}">Login to your Account</a>
-                </h3>
-            </div>
-        </div>
-        <!--row-->
-        <div class="row">
-            <div class="col-md-3">
-                <h5 class="footer-company--name">
-                    Account
-                </h5>
-                <div class="list-group footer-groups">
-                    <a href="#" class="list-group-item list-group-item-action">Account Details</a>
-                    <a href="#" class="list-group-item list-group-item-action">Orders</a>
-                    <a href="#" class="list-group-item list-group-item-action">Retuens & Exchange</a>
-                    <a href="#" class="list-group-item list-group-item-action">WishList</a>
-                    <a href="#" class="list-group-item list-group-item-action">Email Preferences</a>
-                
                 </div>
-            </div>
-            <!--col-->
-            <div class="col-md-3">
-                <h5 class="footer-company--name">
-                    Client Concierge
-                </h5>
-                <div class="list-group footer-groups">
-                    <a href="#" class="list-group-item list-group-item-action">Help Centre</a>
-                    <a href="#" class="list-group-item list-group-item-action">FAQ</a>
-                    <a href="#" class="list-group-item list-group-item-action">Payment Options</a>
-                    <a href="#" class="list-group-item list-group-item-action">Delivery Options</a>
-                    <a href="#" class="list-group-item list-group-item-action">Click and Collect</a>
-                    <a href="#" class="list-group-item list-group-item-action">Return Policy</a>
-                
+                <!--col-->
+                <div class="col-lg-4 col-sm-6">
+                    <h5 class="footer-company--name">
+                        Client Concierge
+                    </h5>
+                    <div class=" footer-group">
+                        <a href="#" class="footer-group-item">Help Centre</a>
+                        <a href="#" class="footer-group-item ">FAQ</a>
+                        <a href="#" class="footer-group-item">Payment Options</a>
+                        <a href="#" class="footer-group-item ">Delivery Options</a>
+                        <a href="#" class="footer-group-item ">Click and Collect</a>
+                        <a href="#" class="footer-group-item ">Return Policy</a>
+                    </div>
                 </div>
-            </div>
-            <!--col-->
-            <div class="col-md-3">
-                <h5 class="footer-company--name">
-                    The Company
-                </h5>
-                <div class="list-group footer-groups">
-                    <a href="#" class="list-group-item list-group-item-action">About Us</a>
-                    <a href="#" class="list-group-item list-group-item-action">Careers at The Look</a>
-                    <a href="#" class="list-group-item list-group-item-action">Tech Careers</a>
-                    <a href="#" class="list-group-item list-group-item-action">Marketing Services</a>
-                    <a href="#" class="list-group-item list-group-item-action">Contact</a>
-                    <a href="#" class="list-group-item list-group-item-action">Return Policy</a>
-                
+                <!--col-->
+                <div class="col-lg-4 col-sm-6">
+                    <h5 class="footer-company--name">
+                        The Company
+                    </h5>
+                    <div class=" footer-group">
+                        <a href="#" class="footer-group-item">About Us</a>
+                        <a href="#" class="footer-group-item">Careers at The Look</a>
+                        <a href="#" class="footer-group-item ">Tech Careers</a>
+                        <a href="#" class="footer-group-item ">Marketing Services</a>
+                        <a href="#" class="footer-group-item">Contact</a>
+                        <a href="#" class="footer-group-item ">Return Policy</a>
+                    </div>
                 </div>
+                
             </div>
-            <!--col-->
-            <div class="col-md-3">
-                <h5 class="footer-company--name">
-                    246 Clients
-                </h5>
-                <p class="footer-text-sm">THE LOOK ONLINE SHOPPING </p>
-                <ul class="list-group list-group-horizontal-md">
-                    <li class="list-group-item">Facebook </li>
-                    <li class="list-group-item">Insta </li>
-                    <li class="list-group-item">Twitter </li>
-                    <li class="list-group-item"> Reddit </li>
-                </ul>
-            </div> 
         </div>
         <!--row-->
         <p class="footer-text">&copy;2020. All Rights Reserved The Look <p>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import Group
+from django.views.generic import View
 from django.http import JsonResponse
 
 import json
@@ -48,6 +49,7 @@ def log_out(request):
     logout(request)
     return redirect('login')
 
+#store home view 
 def store_view(request):
     brands = Brand.objects.all().order_by('name')
     categories = Category.objects.all()
@@ -69,6 +71,21 @@ def store_view(request):
                'shipping' : False,
                }
     return render(request, 'store/store.html', context)
+
+#product detail view
+def product_detail_view(request,pk):
+    product = Product.objects.get(id=pk)
+    data = cartData(request)
+    items = data['items']
+    order = data['order']
+    cartItems = data['cartItems']
+    context = {
+        'product': product,
+        'items' : items,
+        'order' : order,
+        'cartItems' : cartItems,
+    } 
+    return render(request,'store/partials/product.html', context)
 
 
 def cart_view(request):
@@ -154,33 +171,15 @@ def processorder_view(request):
             )
     return JsonResponse('Payment was completed...', safe = False)
 
-def view_product(request,pk):
-    
-    products = Product.objects.get(id=pk)
-    data = cartData(request)
-    items = data['items']
-    order = data['order']
-    cartItems = data['cartItems']
-    
-    context = {
-        'product': product,
-        'items' : items,
-        'order' : order,
-        'cartItems' : cartItems,
-        'brands' : brands,
-        'categories':categories,
-        'collections' : collections,
-        'tags' : tags,
-    } 
-    return render(request,'store/partials/product.html', context)
 
-def brand_list_view(request,vendor):
+
+def brand_list_view(request,name):
     brands = Brand.objects.all().order_by('name')
     categories = Category.objects.all()
     collections = Collection.objects.all().order_by('name')
     tags = Tag.objects.all().order_by('name')
-    
-    products = Product.objects.filter(brand=brand)
+    brand = brands.filter(name=name)
+    products = brand.product_set.all()
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -198,13 +197,13 @@ def brand_list_view(request,vendor):
     }  
     return render(request,'store/partials/brand.html', context)
     
-def category_list_view (request,cat):
+def category_list_view (request,name):
     brands = Brand.objects.all().order_by('name')
     categories = Category.objects.all()
     collections = Collection.objects.all().order_by('name')
     tags = Tag.objects.all().order_by('name')
     
-    products = Product.objects.filter(category=cat)
+    products = Product.objects.filter(category=name)
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -224,13 +223,13 @@ def category_list_view (request,cat):
    
     
     
-def collection_list_view(request,coll):
+def collection_list_view(request,name):
     brands = Brand.objects.all().order_by('name')
     categories = Category.objects.all()
     collections = Collection.objects.all().order_by('name')
     tags = Tag.objects.all().order_by('name')
     
-    products = Product.objects.filter(category=cat)
+    products = Product.objects.filter(collection=name)
     unique_products = set(products)
     data = cartData(request)
     items = data['items']
@@ -249,13 +248,13 @@ def collection_list_view(request,coll):
     } 
     return render(request,'store/partials/collection.html',context) 
 
-def tag_list_view (request,tag):
+def tag_list_view (request,name):
     brands = Brand.objects.all().order_by('name')
     categories = Category.objects.all()
     collections = Collection.objects.all().order_by('name')
     tags = Tag.objects.all().order_by('name')
     
-    products = Product.objects.filter(tag=tag)
+    products = Product.objects.filter(tag=name)
     data = cartData(request)
     items = data['items']
     order = data['order']

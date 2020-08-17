@@ -1,15 +1,44 @@
+{% extends 'store/base.html' %}
 {% load static %}
-{% extends 'store/partials/index.html' %}
 {% block content %}
-	<div class="col-md-9">
+	<div class="row">
 		{% if product %}
-			<img class="thumbnail" src="{{product.imageURL}}">
-			<div class="box-element product">
-				<h5 class="product-name"><strong>{{product.name}}</strong></h5>
-				<h5 class="product-price">${{product.price}}</h5>
-				<!--<hr>-->
-				<button data-product="{{product.id}}" data-action="add" class="btn btn-sm btn-outline-secondary add-btn update-cart"><span class="lnr lnr-cart"></span> Add to Cart</button>
+		    <div class="col-md-5">
+				<img class="thumbnail mt-3" src="{{product.imageURL}}">
+				<img class="thumbnail mt-3" src="{{product.imageURL}}">
+				<img class="thumbnail mt-3" src="{{product.imageURL}}">
+			</div>
+			<div class="col-md-6">
+				<div class="box-element product">
+					<a  class="btn btn-outline-dark" href="{% url 'store:home' %}">&#x2190; Continue Shopping</a>
+					<h3 class="product-name"><strong>{{product.name}}</strong></h3>
+					<h6>{{product.brand}}</h6>
+					<h5 class="product-price">${{product.price}}</h5>
+					<h5 class="product-size-heading">SELECT A SIZE</h5>
+					<div class="product-size">
+                      <div class="product-size-variable" data-action="add-size" data-product="{{product.id}}" > S</div>
+					  <div class="product-size-variable" data-action="add-size" data-product="{{product.id}}"> M</div>
+					  <div class="product-size-variable" data-action="add-size" data-product="{{product.id}}"> L</div>
+					  <div class="product-size-variable" data-action="add-size" data-product="{{product.id}}"> X</div>
+					</div>
+					<hr>
+					<h5 class="product-description-heading">Product Details</h5>
+					<p class="product-description-text" > Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+					<p class="product-description-text" >Dolorum consectetur, deserunt excepturi sunt cumque. </p>
+					<p class="product-description-text" >Adipisci maxime nam alias, iusto quis possimus! </p>
+					<!--<h5 class="product-name"><strong>{{product.name}}</strong></h5>-->
+					<!--<h5 class="product-price">${{product.price}}</h5>-->
+					<button data-product="{{product.id}}" data-action="add" class="btn btn-sm btn-outline-secondary add-btn update-cart"><span class="lnr lnr-cart"></span> Add to Cart</button>
+					<button data-product="{{product.id}}" data-action="add" class="btn btn-sm btn-outline-secondary add-btn update-cart"><span class="lnr lnr-heart"></span> Add to Wishlist</button>
+					<hr>
+					<h5>Shipping</h5>
+					<p>FREE Standard delivery. Faster options available.</p>
+					<p>FREE Collection. Open 7 days a week.</p>
+
+				</div>
 			</div>
 		{% endif %}
     </div>
 {% endblock content %}
+
+	

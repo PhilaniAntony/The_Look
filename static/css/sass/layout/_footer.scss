@@ -1,1 +1,27 @@
-@import '../abstract/abstract-dir';
+@import "../abstract/abstract-dir";
+
+footer.footer {
+  background-color: black;
+  color: white;
+  padding-top: 25px;
+}
+
+h4.footer-text {
+  color: white;
+  font-weight: 200;
+}
+
+button.btn.btn-outline-secondary.footer-button.mb-2 {
+  margin-left: 1.5rem;
+  margin-top: .5rem;
+  color: white;
+  background-color: transparent;
+  letter-spacing: 1px;
+  border: 1px solid white;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+  }
+}

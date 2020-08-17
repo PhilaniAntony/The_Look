@@ -2,25 +2,37 @@
 
 .navbar {
   font-family: $type1;
-  font-weight: $font-weight-light;;
+  font-weight: $font-weight-light;
   background: $navbar-bg;
-  transition:background $action-transition-duration $action-transition-timing-function;
-  -webkit-transition:background $action-transition-duration $action-transition-timing-function;
-  -moz-transition:background $action-transition-duration $action-transition-timing-function;
-  -ms-transition:background $action-transition-duration $action-transition-timing-function;
+  transition: background $action-transition-duration
+    $action-transition-timing-function;
+  -webkit-transition: background $action-transition-duration
+    $action-transition-timing-function;
+  -moz-transition: background $action-transition-duration
+    $action-transition-timing-function;
+  -ms-transition: background $action-transition-duration
+    $action-transition-timing-function;
 
   .navbar-brand {
     width: 110px;
   }
   .navbar-brand-wrapper {
-    transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
-    -webkit-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
-    -moz-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
-    -ms-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+    transition: width $action-transition-duration
+        $action-transition-timing-function,
+      background $action-transition-duration $action-transition-timing-function;
+    -webkit-transition: width $action-transition-duration
+        $action-transition-timing-function,
+      background $action-transition-duration $action-transition-timing-function;
+    -moz-transition: width $action-transition-duration
+        $action-transition-timing-function,
+      background $action-transition-duration $action-transition-timing-function;
+    -ms-transition: width $action-transition-duration
+        $action-transition-timing-function,
+      background $action-transition-duration $action-transition-timing-function;
     background: $sidebar-dark-bg;
     width: $sidebar-width-lg;
     height: $navbar-height;
-    padding:0 $sidebar-menu-padding-x;
+    padding: 0 $sidebar-menu-padding-x;
 
     @media (max-width: 991px) {
       width: 55px;
@@ -29,20 +41,20 @@
     }
 
     .navbar-brand {
-      color: lighten(color(gray-dark), 20%);
+      color: lighten($gray-dark, 20%);
       font-size: 1.5rem;
       line-height: 48px;
       margin-right: 0;
-      padding: .25rem 0;
+      padding: 0.25rem 0;
 
       &:active,
       &:focus,
       &:hover {
-        color: lighten(color(gray-dark), 10%);
+        color: lighten($gray-dark, 10%);
       }
 
       img {
-        width: calc(#{$sidebar-width-lg} - 120px );
+        width: calc(#{$sidebar-width-lg} - 120px);
         max-width: 100%;
         height: 28px;
         margin: auto;
@@ -54,7 +66,7 @@
           display: flex;
         }
         img {
-          width: calc(#{$sidebar-width-icon} - 35px );
+          width: calc(#{$sidebar-width-icon} - 35px);
           max-width: 100%;
           height: 28px;
           margin: auto;
@@ -67,7 +79,7 @@
       padding: 0;
       margin-left: auto;
       @media screen and (max-width: 991px) {
-        display:none;
+        display: none;
       }
       .sidebar-icon-only & {
         margin-right: auto;
@@ -77,10 +89,14 @@
   }
 
   .navbar-menu-wrapper {
-    transition: width $action-transition-duration $action-transition-timing-function;
-    -webkit-transition: width $action-transition-duration $action-transition-timing-function;
-    -moz-transition: width $action-transition-duration $action-transition-timing-function;
-    -ms-transition: width $action-transition-duration $action-transition-timing-function;
+    transition: width $action-transition-duration
+      $action-transition-timing-function;
+    -webkit-transition: width $action-transition-duration
+      $action-transition-timing-function;
+    -moz-transition: width $action-transition-duration
+      $action-transition-timing-function;
+    -ms-transition: width $action-transition-duration
+      $action-transition-timing-function;
     color: $navbar-menu-color;
     padding-left: 24px;
     padding-right: 24px;
@@ -106,8 +122,8 @@
           display: none;
         }
       }
-      &.navbar-toggler-right{
-        @media (max-width:991px){
+      &.navbar-toggler-right {
+        @media (max-width: 991px) {
           padding-left: 15px;
           padding-right: 11px;
           border-right: none;
@@ -127,7 +143,7 @@
         color: $navbar-menu-icon-color;
       }
 
-      input{
+      input {
         background-color: transparent;
         border: none;
         cursor: pointer;
@@ -137,7 +153,7 @@
         position: relative;
         transition: width 400ms ease, background 400ms ease;
 
-        &:focus{
+        &:focus {
           background-color: transparent;
           border-bottom: 1px solid $navbar-menu-icon-color;
           border-radius: 0;
@@ -168,7 +184,7 @@
       .count-number {
         min-width: 14px;
         height: 14px;
-        font-size: .5rem;
+        font-size: 0.5rem;
         color: $white;
         bottom: 16px;
         right: -5px;
@@ -192,8 +208,8 @@
           @include display-flex;
           @include align-items(center);
           @media (max-width: 767px) {
-            margin-left: .8rem;
-            margin-right: .8rem;
+            margin-left: 0.8rem;
+            margin-right: 0.8rem;
           }
           i {
             font-size: $navbar-icon-font-size;
@@ -225,7 +241,7 @@
             -moz-box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
             box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
             &.navbar-dropdown {
-              position: absolute;            
+              position: absolute;
               font-size: 0.9rem;
               margin-top: 0;
               padding: 0;
@@ -284,7 +300,7 @@
           }
 
           .dropdown-toggle {
-            img{
+            img {
               margin-right: 14px;
             }
           }
@@ -317,11 +333,10 @@
           i {
             font-size: 14px;
           }
-          
         }
 
         & .message-dropdown.count-indicator {
-          .count{
+          .count {
             transform: translate(-50%);
             position: absolute;
             width: 10px;
@@ -344,7 +359,7 @@
     }
   }
 }
-@media (max-width:991px) {
+@media (max-width: 991px) {
   .navbar {
     flex-direction: row;
     .navbar-brand-wrapper {
@@ -366,11 +381,11 @@
   }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .navbar {
     .navbar-brand-wrapper {
       width: 55px;
-      .brand-logo-mini{
+      .brand-logo-mini {
         padding-top: 0px;
       }
     }

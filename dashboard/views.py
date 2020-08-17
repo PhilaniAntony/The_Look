@@ -8,7 +8,7 @@ from .decorators import unauthoncticated_user,allowed_users, admin_only
 from django.contrib.auth.models import Group
 # Create your views here.
 from .models import *
-from .forms import  OrderForm, CreateUserForm, CustomerForm, ProductForm, CollectionForm, CategoryForm,TagForm
+from .forms import   CreateUserForm, ProductForm, CollectionForm, CategoryForm,TagForm
 #from .filters import OrderFilter
 from django.contrib.auth import authenticate,login,logout
 
@@ -23,7 +23,7 @@ def register_view(request):
             user.groups.add(group)
             Customer.objects.create(user = user)
             messages.success(request, f'A new account has been created ')   
-            return redirect('home')  
+            return redirect('dashboard:home')  
     context={
         'form' : form
     }
@@ -38,7 +38,7 @@ def login_view(request):
         user = authenticate(request, username=username, password= password)
         if user is not None :
             login(request, user)
-            return redirect('home')
+            return redirect('dashboard:home')
         else:
             messages.info(request,'Username or password incorrect')
     
@@ -48,7 +48,7 @@ def login_view(request):
 #logout View for cautomer
 def log_out(request):
     logout(request)
-    return redirect('login')
+    return redirect('dashboard:login')
 
 
 
@@ -89,21 +89,16 @@ def user_view(request):
 #@login_required(login_url='login')
 #@admin_only
 def home_view(request):
-    client = C.objects.all()
-    total_customers = customers.count()
-    orders = Order.objects.all()
+    client = Client.objects.all()
+    total_customers = client.count()
+    orders = Client.objects.all()
     total_orders = orders.count()
-    pending = orders.filter(status ='Pending').count()
-    out_for_delivery = orders.filter(status ='Out for delivery').count()
-    delivered = orders.filter( status ='Delivered').count()
+   
     context = {
-        'customers' : customers,
+        'customers' : client,
         'total_customers' : total_customers, 
         'orders' : orders,
-        'total_orders' : total_orders,
-        'pending' : pending,
-        'out_for_delivery' : out_for_delivery,
-        'delivered' : delivered,
+        'total_orders' : total_customers,
     }
     return render(request,'dashboard/main.html',  context )
 
@@ -123,28 +118,28 @@ def products_view(request):
 
 #Create Product View 
 @login_required(login_url='login')
-@allowed_users(allowed_roles = ['admin','client'])
+#@allowed_users(allowed_roles = ['admin','client'])
 def add_product (request) :
      return render(request, 'dashboard/userpages/add_product.html')
     
 #//////
 #//////
 @login_required(login_url='login')
-@allowed_users(allowed_roles = ['admin','client'])
+#@allowed_users(allowed_roles = ['admin','client'])
 def add_payment (request) :
      return render(request, 'dashboard/userpages/add_payment.html')
     
 #//////
 #//////
 @login_required(login_url='login')
-@allowed_users(allowed_roles = ['admin','client'])
+#@allowed_users(allowed_roles = ['admin','client'])
 def add_shippment (request) :
      return render(request, 'dashboard/userpages/add_shipping.html')
     
 #//////
 #//////
 @login_required(login_url='login')
-@allowed_users(allowed_roles = ['admin','client'])
+#@allowed_users(allowed_roles = ['admin','client'])
 def add_supplier (request) :
      return render(request, 'dashboard/userpages/add_supplier.html')
     
@@ -154,30 +149,12 @@ def add_supplier (request) :
 
 
 
-#Customer View for super users
-@login_required(login_url='login')
-@allowed_users(allowed_roles = ['customer', 'admin'])
-def customer_view(request,pk):
-    customer = Customer.objects.get(id=pk)
-    orders = customer.order_set.all()
-    orders_count = orders.count()
-    #myfilter = OrderFilter(request.GET, queryset=orders)
-    orders = myfilter.qs
-    context =  {
-        #'myfilter': myfilter,
-        'customer': customer,
-        'orders' : orders,
-        'orders_count' : orders_count
-    }
-    return render(request, 'dashboard/userpages/blank-page.html', context)
-
-
 #Create Order View for super users
 @login_required(login_url='login')
-@allowed_users(allowed_roles = ['admin'])
+#@allowed_users(allowed_roles = ['admin'])
 def create_Order (request,pk) :
     OrderFormSet = inlineformset_factory(Customer, Order, fields=('product','status' ), extra=3 )
-    customer = Customer.objects.get(id=pk)
+    customer = Client.objects.get(id=pk)
     formset = OrderFormSet(queryset=Order.objects.none() ,instance= customer)
     #form = OrderForm(initial={'customer': customer})
     
@@ -194,17 +171,11 @@ def create_Order (request,pk) :
     }
     return render(request, 'dashboard/userpages/blank-page.html', context)
 
-#Upadet order View for super users
-#@login_required(login_url='login')
-#@allowed_users(allowed_roles = ['admin'])
-def get_Orders (request,):
-    orders = Order.objects.all()
-    context ={ 'orders': orders}
-    return render(request, 'dashboard/userpages/orders.html', context)
+
     
 #Upadet order View for super users
 @login_required(login_url='login')
-@allowed_users(allowed_roles = ['admin'])
+#@allowed_users(allowed_roles = ['admin'])
 def update_Order (request, pk):
     order = Order.objects.get(id=pk)
     form = OrderForm(instance=order)
@@ -212,7 +183,7 @@ def update_Order (request, pk):
         form = OrderForm(request.POST, instance=order)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('dashboard:home')
     context ={ 'form': form}
     return render(request, 'dashboard/userpages/blank-page.html', context)
     
@@ -220,31 +191,20 @@ def update_Order (request, pk):
 
 #Delete View for super users
 @login_required(login_url='login')  
-@allowed_users(allowed_roles = ['admin'])
+#@allowed_users(allowed_roles = ['admin'])
 def delete_Order (request, pk) :
     order = Order.objects.get(id=pk)
     if request.POST == 'POST':
         order.delete()
-        return redirect('home')
+        return redirect('dashboard:home')
     context={
         'item' : order
     }
     return render(request,'dashboard/userpages/blank-page.html', context)
 
 
-#Customers View for super users
-#@login_required(login_url='login')
-#@allowed_users(allowed_roles = ['customer', 'admin'])
-def customers_view(request):
-    customers = Customer.objects.all()
-    #orders = customer.order_set.all()
-    #orders_count = orders.count()
-    #myfilter = OrderFilter(request.GET, queryset=orders)
-    #orders = myfilter.qs
-    context =  {
-        'customers': customers,
-    }
-    return render(request, 'dashboard/userpages/customers.html', context)
+
+
 #Payment Vew
 def payment_view(request):
     payment =Paymentmethod.objects.all()

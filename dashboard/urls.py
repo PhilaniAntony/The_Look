@@ -2,25 +2,21 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 
+app_name = 'dashboard'
 urlpatterns = [
     #Admin page  ex: /home/
-    path('', views.home_view, name= 'client_home'),
+    path('', views.home_view, name= 'home'),
     #user ex: user/
-    path('user/', views.user_view, name= 'client_user'),
+    path('user/', views.user_view, name= 'user'),
     
-    path('account/', views.account_settings, name="client_account"),
+    path('account/', views.account_settings, name="account"),
     #register ex: register/
-    path('register/', views.register_view, name= 'client_register'),
+    path('register/', views.register_view, name= 'register'),
     #register ex: /login/
-    path('login/', views.login_view, name= 'client_login'),
+    path('login/', views.login_view, name= 'login'),
     #logout  ex: /logout/
-    path('logout/', views.login_view, name= 'client_logout'),
+    path('logout/', views.log_out, name= 'logout'),
     
-    #Get /
-    #products  ex : /products/
-    path('customers/', views.customers_view, name='customers'),
-    #get orders id  ex: /orders/
-    path('orders/', views.get_Orders, name= "orders"),
     #products  ex : /products/
     path('products/', views.products_view, name='products'),
     #suppliers  ex : /products/
@@ -34,10 +30,6 @@ urlpatterns = [
     #tags  ex : /tags/
     path('tags/', views.tag_view, name='tags'),
 
-    #Get /id
-    #customer id  ex: /customer/id
-    path('customer/<str:pk>', views.customer_view, name='customer'),
-    
     #Add /
     #add products 
     path('add_product/', views.add_product, name= "add_product"),
