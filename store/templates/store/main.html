@@ -96,7 +96,7 @@
         	<h3 class="main-section_heading">Shop by Category</h3>
 			<div class="list-group list-group-horizontal-md mb-3 ">
 			{% for category in categories  %}
-				<a class="list-group-item" href="{% url 'store:category' category.name %}">
+				<a class="list-group-item" href="{% url 'store:category' category.id  %}">
 					{{category.name}}
 				</a>
 				

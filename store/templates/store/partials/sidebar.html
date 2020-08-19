@@ -3,7 +3,7 @@
 	<h5 class="group-title">Brands</h5>
 	<div class="list-group">
 		{% for brand in brands %}
-		<a href="{% url 'store:brand' brand.name %}" class="list-group-item list-group-item-action">
+		<a href="{% url 'store:brand' brand.id %}" class="list-group-item list-group-item-action">
     		{{brand.name}}
   		</a>
 		{% endfor %}	  	
@@ -12,7 +12,7 @@
 	<h5 class="group-title">Categories</h5>
 	<div class="list-group">
 		{% for tag in tags %}
-		<a href="{% url 'store:tag' tag.name %}" class="list-group-item list-group-item-action">
+		<a href="{% url 'store:tag' tag.id %}" class="list-group-item list-group-item-action">
     		{{tag.name}}
   		</a>
 		{% endfor %}
@@ -21,7 +21,7 @@
 	<h5 class="group-title">Collections</h5>
 	<div class="list-group">
 		{% for collection in collections %}
-		<a href="{% url 'store:collection' collection.name %}" class="list-group-item list-group-item-action">
+		<a href="{% url 'store:collection' collection.id %}" class="list-group-item list-group-item-action">
     		{{collection.name}}
         </a>
 		{% endfor %}

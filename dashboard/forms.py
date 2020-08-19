@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import  UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import  Client, Product, Category,Collection,Tag
+from .models import  Client, Product, Category,Collection,Tag, Supplier, Shipping_company
 
 
 class CreateUserForm(UserCreationForm):
@@ -28,5 +28,16 @@ class CategoryForm (ModelForm):
 class TagForm (ModelForm):
     class Meta :
         model = Tag
-        fields = '__all__'       
+        fields = '__all__'    
+        
+class SupplierForm(ModelForm):
+    class Meta :
+        model =  Supplier
+        fields = '__all__'
+        
+class ShippingCompanyForm(ModelForm):
+    class Meta :
+        model =  Shipping_company
+        fields = '__all__'
+        
         

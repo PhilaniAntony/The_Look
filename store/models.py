@@ -85,7 +85,7 @@ class Product(models.Model):
 	name = models.CharField(max_length=200)
 	price = models.DecimalField(max_digits=7, decimal_places=2)
 	digital = models.BooleanField(default=False,null=True, blank=True)
-	brand = models.ForeignKey(Brand,on_delete=models.CASCADE)
+	brand = models.ForeignKey(Brand,on_delete=models.CASCADE, null=True, blank=True)
 	category = models.ManyToManyField(Category)
 	collection = models.ManyToManyField(Collection)
 	tags = models.ManyToManyField(Tag)
@@ -157,3 +157,8 @@ class ShippingAddress(models.Model):
 
 	def __str__(self):
 		return self.address
+
+class Wishlist(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    date_added = models.DateTimeField(auto_now_add=True)

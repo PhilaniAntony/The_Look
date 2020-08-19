@@ -4,135 +4,171 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <!-- Quick Action Toolbar Starts-->
-         <a href="{% url 'dashboard:home' %}" type="button" class="btn px-0"><i class="icon-arrow-left mr-2"></i> Suppliers</a>
+         <a href="{% url 'dashboard:home' %}" type="button" class="btn px-0"><i class="icon-arrow-left mr-2"></i> Dashboard</a>
         <h3 class="display-3">Add Supplier</h3>
         <div class="row quick-action-toolbar">
-            <div class="col-8 grid-margin stretch-card">
+            
+            <div class="col-8 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Basic form elements</h4>
-                    <p class="card-description"> Basic form elements </p>
                     <form class="forms-sample">
                       <div class="form-group">
-                        <label for="exampleInputName1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                        <label for="exampleInputName1">Company Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Company Name">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail3">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                        <label for="exampleInputName1">Account Manager</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Account Manager">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword4">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                        <label for="exampleInputName1">Email Adrress</label>
+                        <input type="email" class="form-control" id="exampleInputName1" placeholder="Email Adrress">
                       </div>
                       <div class="form-group">
-                        <label for="exampleSelectGender">Gender</label>
-                        <select class="form-control" id="exampleSelectGender">
-                          <option>Male</option>
-                          <option>Female</option>
-                        </select>
+                        <label for="exampleTextarea1">Phone</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Phone Number">
                       </div>
                       <div class="form-group">
-                        <label>File upload</label>
+                        <label for="exampleTextarea1">Website</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="url">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Note</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Product Note"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label>Company Logo</label>
                         <input type="file" name="img[]" class="file-upload-default">
                         <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                          <input type="text" class="form-control file-upload-info" disabled placeholder="Company Logo">
                           <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                            <button class="file-upload-browse btn btn-outline-primary" type="button">Upload</button>
                           </span>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInputCity1">City</label>
-                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleTextarea1">Textarea</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                      </div>
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button class="btn btn-light">Cancel</button>
+                    
                     </form>
-                  </div>
+                   </div>
                 </div>
-              </div>
-              <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Input size</h4>
-                    <p class="card-description"> Add classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>. </p>
-                    <div class="form-group">
-                      <label>Large input</label>
-                      <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username">
-                    </div>
-                    <div class="form-group">
-                      <label>Default input</label>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-                    </div>
-                    <div class="form-group">
-                      <label>Small input</label>
-                      <input type="text" class="form-control form-control-sm" placeholder="Username" aria-label="Username">
-                    </div>
+                    <h4 class="display-4">Address</h4>
+                    <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Address</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Address">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">City</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="City">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">State</label>
+                        <input type="email" class="form-control" id="exampleInputName1" placeholder="State">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Zipcode</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Zipcode">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Country</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Country">
+                      </div>
+                    </form>
+                      
                   </div>
-                </div>
+                </div> 
+                
               </div>
-              <div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Select size</h4>
-                    <p class="card-description"> Add classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>. </p>
-                    <div class="form-group">
-                      <label for="exampleFormControlSelect1">Large select</label>
-                      <select class="form-control form-control-lg" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlSelect2">Default select</label>
-                      <select class="form-control" id="exampleFormControlSelect2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlSelect3">Small select</label>
-                      <select class="form-control form-control-sm" id="exampleFormControlSelect3">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                
+            
         <div class="col-4 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="display-4">Supplier Staus</h4>
-                    <p class="card-description">Active  </p>
+                    <h4 class="display-4">Supplier Availability</h4>
+                    <p class="card-description"> Available on 1 of 1 Channels  </p>
                     <hr />
-                    <h4 class="display-5">Deactivate Supplier Status</h4>
+                    <a href="#" type="button" class="btn px-0"> Store <i class="icon-handbag ml-3"></i></a>
+                </div>
+            </div>
+            <div class="card">
+               <div class="card-body">
+                <h4 class="display-4">Organisations</h4>
+                <form class="forms-sample">
                       <div class="form-group">
+                        <label for="exampleInputName1">Product Type </label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Tshirt">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Vendor</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nike">
+                      </div>
+                    </form>
+                <hr />
+                <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Collection </label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Collection">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Category</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nike">
+                      </div>
+                    </form>
+                    <hr />
+                <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Tags </label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Tags">
+                      </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="display-5">Product Variant</h4>
+                    <div class="form-group">
                         <div class="form-check">
                             <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">Deactivate Supplier </label>
+                            <input type="checkbox" class="form-check-input">Is the products Available in different sizes and color </label>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
             
-        </div>      
+        </div>
+     <div class="row quick-action-toolbar">
+        <div class="col-8 grid-margin">
+            <div class="card">
+               <div class="card-body">
+                <h4 class=" display-4">Shipping</h4>
+                <form class="forms-sample">
+                      <div class="form-group">
+                       <label for="exampleInputName1">Weight </label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" aria-label="weight">
+                        <div class="input-group-append">
+                          <span class="input-group-text">kg</span>
+                        </div>
+                      </div>
+                    </div>
+            
+                    </form>
+                <hr />
+                <form class="forms-sample" >                   
+                      <div class="form-group">
+                        <label for="exampleInputName1">HSI Code (Harmonised System)</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="HSI">
+                      </div>
+                  </form>
+                    
+                </div>
+            </div>
+        </div>
+        
+     </div>       
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->

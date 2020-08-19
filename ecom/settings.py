@@ -124,13 +124,25 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-#SMTP Configuration
+#SMTP Configuratio
+#import environ
+
+#env = environ.Env(
+    # set casting, default value
+    #DEBUG=(bool, False)
+#)
+# reading .env file
+#environ.Env.read_env()
+
+# False if not in os.environ
+#DEBUG = env('DEBUG')
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'iamturnaog@gmail.com'
-EMAIL_HOST_PASSWORD ='**********'
+#EMAIL_HOST = env('EMAIL_HOST')
+#EMAIL_PORT = env('EMAIL_PORT')
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD =env('EMAIL_HOST_PASSWORD')
 
 
 STATIC_URL = '/static/'

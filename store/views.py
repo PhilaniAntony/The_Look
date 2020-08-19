@@ -139,8 +139,19 @@ def updateitem_view (request):
         
     return JsonResponse('Item was added', safe = False)
 
-
-
+def wishlist_view(request):
+    data = json.loads(request.body)
+    action = data['action']
+    productId = data['productId']
+    
+    product = Product.objects.get(Id=productId)
+    customer = requset.user.customer
+    
+    wishitem, created = Wishlist.objects.get_or_create(customer=customer, product=product)
+    wishitem.save()
+    return JsonResponse("peoduct added to wishlist", safe=False)
+    
+    
 def processorder_view(request):
     transaction_id = datetime.datetime.now().timestamp()
     
@@ -173,13 +184,17 @@ def processorder_view(request):
 
 
 
-def brand_list_view(request,name):
+def brand_list_view(request,pk):
     brands = Brand.objects.all().order_by('name')
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('name')
     collections = Collection.objects.all().order_by('name')
     tags = Tag.objects.all().order_by('name')
-    brand = brands.filter(name=name)
-    products = brand.product_set.all()
+    
+    brand = Brand.objects.get(id=pk)
+    products = Product.objects.all().filter(brand=brand)
+    #products = brand.product_set.all() 
+    print(brand, products )
+    
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -197,20 +212,23 @@ def brand_list_view(request,name):
     }  
     return render(request,'store/partials/brand.html', context)
     
-def category_list_view (request,name):
+def category_list_view (request,pk):
     brands = Brand.objects.all().order_by('name')
     categories = Category.objects.all()
     collections = Collection.objects.all().order_by('name')
     tags = Tag.objects.all().order_by('name')
     
-    products = Product.objects.filter(category=name)
+    category = Category.objects.get(id=pk) 
+    products = Product.objects.all()
+    category_products = Product.objects.all().filter(category=category.id)
+        
     data = cartData(request)
     items = data['items']
     order = data['order']
     cartItems = data['cartItems']
     
     context = {
-        'products': products,
+        'products': category_products,
         'items' : items,
         'order' : order,
         'cartItems' : cartItems,
@@ -223,38 +241,15 @@ def category_list_view (request,name):
    
     
     
-def collection_list_view(request,name):
+def collection_list_view(request,pk):
     brands = Brand.objects.all().order_by('name')
     categories = Category.objects.all()
     collections = Collection.objects.all().order_by('name')
     tags = Tag.objects.all().order_by('name')
     
-    products = Product.objects.filter(collection=name)
-    unique_products = set(products)
-    data = cartData(request)
-    items = data['items']
-    order = data['order']
-    cartItems = data['cartItems']
+    collection = Collection.objects.get(id=pk) 
+    products = Product.objects.all().filter(collection=collection.id)
     
-    context = {
-        'products': unique_products,
-        'items' : items,
-        'order' : order,
-        'cartItems' : cartItems,
-        'brands' : brands,
-        'categories':categories,
-        'collections' : collections,
-        'tags' : tags,
-    } 
-    return render(request,'store/partials/collection.html',context) 
-
-def tag_list_view (request,name):
-    brands = Brand.objects.all().order_by('name')
-    categories = Category.objects.all()
-    collections = Collection.objects.all().order_by('name')
-    tags = Tag.objects.all().order_by('name')
-    
-    products = Product.objects.filter(tag=name)
     data = cartData(request)
     items = data['items']
     order = data['order']
@@ -270,7 +265,34 @@ def tag_list_view (request,name):
         'collections' : collections,
         'tags' : tags,
     } 
-    return render(request,'store/partials/tag.html', context) 
+    return render(request,'store/partials/collection.html',context) 
+
+def tag_list_view (request,pk):
+    brands = Brand.objects.all().order_by('name')
+    categories = Category.objects.all()
+    collections = Collection.objects.all().order_by('name')
+    tags = Tag.objects.all().order_by('name')
+    
+    tag = tags.get(id=pk) 
+    products = Product.objects.all().filter(tags=tag)
+    print(tags,products)
+
+    data = cartData(request)
+    items = data['items']
+    order = data['order']
+    cartItems = data['cartItems']
+    
+    context = {
+        'products': products,
+        'items' : items,
+        'order' : order,
+        'cartItems' : cartItems,
+        'brands' : brands,
+        'categories':categories,
+        'collections' : collections,
+        'tags' : tags,
+    } 
+    return render(request,'store/partials/tags.html', context) 
 
 
     

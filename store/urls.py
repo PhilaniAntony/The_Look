@@ -11,13 +11,14 @@ urlpatterns = [
 	path('checkout/', views.checkout_view, name="checkout"),
  
 	path('update_item/', views.updateitem_view, name="updateitem"),
+    path('add_wishlist/', views.wishlist_view, name="add_wishlist"),
 	path('process_order/', views.processorder_view, name="processorder"),
  
     #Detail Views
-    path('brand/<str:name>/', views.brand_list_view, name='brand'),
-    path('category/<str:name>/', views.category_list_view, name='category'),
-    path('collection/<str:name>/', views.collection_list_view, name='collection'),
-    path('tag/<str:name>/', views.tag_list_view, name='tag'),
+    path('brand/<int:pk>/', views.brand_list_view, name='brand'),
+    path('category/<int:pk>/', views.category_list_view, name='category'),
+    path('collection/<int:pk>/', views.collection_list_view, name='collection'),
+    path('tag/<int:pk>/', views.tag_list_view, name='tag'),
     
     #register ex: register/
     path('register/', views.register_view, name= 'register'),

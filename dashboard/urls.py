@@ -32,7 +32,7 @@ urlpatterns = [
 
     #Add /
     #add products 
-    path('add_product/', views.add_product, name= "add_product"),
+    path('add_product/',views.add_product , name= "add_product"),
     #add payment 
     path('add_payment/', views.add_payment, name= "add_payment"),
     #add shippment
@@ -45,6 +45,7 @@ urlpatterns = [
     
     #update id  ex: /updateorder/id
     path('updateorder/<str:pk>/', views.update_Order, name= "updateorder" ),
+    
     
     #delete id  ex: /updateorder/id
     path('deleteorder/<str:pk>/', views.delete_Order, name= "deleteorder" ),

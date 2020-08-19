@@ -12020,11 +12020,17 @@ span.nav-link {
   color: #38ce3c;
   padding: 1rem 0 1.125rem; }
 
+/*
+Font sizes
+*/
 body {
   background-color: #fafafa;
   font-family: "PT Sans Narrow", sans-serif;
   color: black; }
 
+/*
+Font sizes
+*/
 body {
   background-color: #fafafa;
   font-family: "PT Sans Narrow", sans-serif;
@@ -12032,8 +12038,24 @@ body {
 
 footer.footer {
   background-color: black;
-  padding-top: 25px;
-  font-family: "Poppins"; }
+  color: white;
+  padding-top: 25px; }
+
+h4.footer-text {
+  color: white;
+  font-weight: 200; }
+
+button.btn.btn-outline-secondary.footer-button.mb-2 {
+  margin-left: 1.5rem;
+  margin-top: .5rem;
+  color: white;
+  background-color: transparent;
+  letter-spacing: 1px;
+  border: 1px solid white; }
+  button.btn.btn-outline-secondary.footer-button.mb-2:hover {
+    background-color: white;
+    color: black;
+    border-color: white; }
 
 .page-body-wrapper {
   min-height: calc(100vh - 70px);
@@ -12343,6 +12365,16 @@ footer.footer {
   @media screen and (max-width: 576px) {
     .pagination .page-item .page-link {
       padding: 0.25rem 0.5rem; } }
+
+.input-group-append .input-group-text,
+.input-group-prepend .input-group-text {
+  border-color: #e8ecf1;
+  padding: 0.94rem 0.75rem;
+  color: #c9c8c8;
+  height: 34px; }
+
+span.input-group-text {
+  height: 34px; }
 
 /* === Boostrap Main SCSS === */
 

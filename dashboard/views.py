@@ -3,12 +3,13 @@ from django.views.generic import View
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import  UserCreationForm
 from django.contrib import messages
+from django.views.generic import TemplateView
 from django.contrib.auth.decorators import  login_required
 from .decorators import unauthoncticated_user,allowed_users, admin_only
 from django.contrib.auth.models import Group
 # Create your views here.
 from .models import *
-from .forms import   CreateUserForm, ProductForm, CollectionForm, CategoryForm,TagForm
+from .forms import   CreateUserForm, ProductForm, CollectionForm, CategoryForm,TagForm, SupplierForm, ShippingCompanyForm
 #from .filters import OrderFilter
 from django.contrib.auth import authenticate,login,logout
 
@@ -119,29 +120,56 @@ def products_view(request):
 #Create Product View 
 @login_required(login_url='login')
 #@allowed_users(allowed_roles = ['admin','client'])
-def add_product (request) :
-     return render(request, 'dashboard/userpages/add_product.html')
+def add_product(request):
+    
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard:home')
+        
+    else:
+        form = ProductForm();
+        return render(request, 'dashboard/userpages/add_product.html', {'form' : form})
+        
+    
     
 #//////
 #//////
 @login_required(login_url='login')
 #@allowed_users(allowed_roles = ['admin','client'])
 def add_payment (request) :
-     return render(request, 'dashboard/userpages/add_payment.html')
+    return render(request, 'dashboard/userpages/add_payment.html', {'form': form})
     
 #//////
 #//////
 @login_required(login_url='login')
 #@allowed_users(allowed_roles = ['admin','client'])
 def add_shippment (request) :
-     return render(request, 'dashboard/userpages/add_shipping.html')
+    if request.method == 'POST':
+        form = ShippingCompanyForm
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard:home')
+        
+    else:
+        form = ShippingCompanyForm();
+        return render(request, 'dashboard/userpages/add_shipping.html', {'form': form})
     
 #//////
 #//////
 @login_required(login_url='login')
 #@allowed_users(allowed_roles = ['admin','client'])
 def add_supplier (request) :
-     return render(request, 'dashboard/userpages/add_supplier.html')
+    if request.method == 'POST':
+        form = SupplierForm
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard:home')
+        
+    else:
+        form = SupplierForm();
+        return render(request, 'dashboard/userpages/add_supplier.html', {'form': form})
     
 #//////
 #//////

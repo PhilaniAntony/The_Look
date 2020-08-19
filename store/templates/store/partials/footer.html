@@ -29,7 +29,7 @@
                 </div>
                 <!--col-->
                 <div class="col-sm-6">
-                    <a href="{% url 'store:login' %}" class="footer-middle-links" >Login to your Account</a>
+                    <a href="{% url 'dashboard:login' %}" class="footer-middle-links" >Login to your Account</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                         Account
                     </h5>
                     <div class="footer-group ">
-                        <a href="#" class="footer-group-item">Account Details</a>
+                        <a href="{% url 'dashboard:register' %}" class="footer-group-item">Account Registration</a>
                         <a href="#" class="footer-group-item ">Orders</a>
                         <a href="#" class="footer-group-item">Returns & Exchange</a>
                         <a href="#" class="footer-group-item ">WishList</a>
