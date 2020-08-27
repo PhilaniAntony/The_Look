@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import Group
 from django.views.generic import View
@@ -8,8 +9,7 @@ import json
 import datetime
 from .models import *
 
-from .forms import CreateUserForm
-
+from .forms import CreateUserForm, ContactDetailsForm, NewsletterForm
 from .utils import cookieCart, cartData, guestOrder
 
 #register view
@@ -23,7 +23,7 @@ def register_view(request):
             user.groups.add(group)
             Customer.objects.create(user = user)
             messages.success(request, f'A new account has been created ')   
-            return redirect('store')  
+            return redirect('store:home')  
     context={
         'form' : form
     }
@@ -37,7 +37,7 @@ def login_view(request):
         user = authenticate(request, username=username, password= password)
         if user is not None :
             login(request, user)
-            return redirect('store')
+            return redirect('store:home')
         else:
             messages.info(request,'Username or password incorrect')
     
@@ -47,10 +47,18 @@ def login_view(request):
 #logout View for cautomer
 def log_out(request):
     logout(request)
-    return redirect('login')
+    return redirect('store:login')
 
 #store home view 
 def store_view(request):
+    form = NewsletterForm()
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('store:home')
+        
+    products = Product.objects.all().order_by('name')    
     brands = Brand.objects.all().order_by('name')
     categories = Category.objects.all()
     collections = Collection.objects.all().order_by('name')
@@ -61,7 +69,8 @@ def store_view(request):
     order = data['order']
     cartItems = data['cartItems']
     
-    products = Product.objects.all().order_by('name')
+    
+         
     context = {'products': products,
                'brands' : brands,
                'categories':categories,

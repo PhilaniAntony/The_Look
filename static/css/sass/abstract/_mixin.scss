@@ -143,18 +143,18 @@
 
 @mixin divider {
     position: relative;
-    transform: translateY(35px);
+    transform: translateY(45px);
     margin-left: 10px;
     border: 1px solid rgba(black, .8);
     background-color: black;
-    width: 30%;
+    width: 35%;
 
     @media (min-width : 1023.98px) and (max-width : 1440px) {
-        transform: translateY(55px)
+        transform: translateY(45px)
     }
 
     @media (min-width: 1024.98px) and (max-width: 1439.98px) {
-        transform: translateY(55px);
+        transform: translateY(45px);
     }
 
     @media (min-width: 845px) and (max-width: 991.98px) {

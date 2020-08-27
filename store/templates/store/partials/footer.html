@@ -9,9 +9,10 @@
                 </div>
                 <!--col-->
                 <div class="col-sm-6">
-                    <form class="form-inline">
+                    <form class="form-inline"  method="POST" action="" >
+                        {% csrf_token %}
                         <div class="form-group">
-                            <input type="email" class="form-control" id="useremail" placeholder="Enter your email!">
+                          {{form.email}} 
                         </div>
                         <button type="submit" class="btn btn-outline-secondary footer-button mb-2">Submit</button>
                     </form>
